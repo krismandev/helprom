@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{{ url('') }}/asset_dashboard/dist/css/adminlte.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    @livewireStyles
 </head>
 
 <body class="hold-transition login-page">
@@ -26,40 +27,7 @@
             <a href="/"><b>Helprom</b></a>
         </div>
         <!-- /.login-logo -->
-        <div class="card">
-            <div class="card-body login-card-body">
-                <p class="login-box-msg">Login untuk masuk kedalam sistem</p>
-
-                <form action="../../index3.html" method="post">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Username">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-user"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Password">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Login</button>
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                </form>
-                <p class="mb-1">
-                    <a href="forgot-password.html">Lupa password ?</a>
-                </p>
-            </div>
-            <!-- /.login-card-body -->
-        </div>
+        <livewire:login-form />
     </div>
     <!-- /.login-box -->
 
@@ -69,7 +37,7 @@
     <script src="{{ url('') }}/asset_dashboard/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="{{ url('') }}/asset_dashboard/dist/js/adminlte.min.js"></script>
-
+    @livewireScripts
 </body>
 
 </html>

@@ -13,14 +13,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//route free access
 Route::get('/', function () {
-    return view('admin.dashboard');
+    return "Halaman Awal Depan";
 });
 
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
+
+//route access user not already login
+Route::group(['middleware' => 'guest'], function () {
+    //login
+    Route::get('/login', function () {
+        return view('login');
+    })->name('login');
 });
 
-Route::get('/login', function () {
-    return view('login');
+//route user already login
+Route::group(['middleware' => 'auth'], function () {
+    //dashboard
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    });
+    //logout
+    Route::get('/logout', function () {
+        Auth()->logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+        return redirect('/login');
+    });
 });
