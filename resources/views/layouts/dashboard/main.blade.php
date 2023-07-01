@@ -16,6 +16,7 @@
         href="{{ url('') }}/asset_dashboard/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    @livewireStyles
     @yield('css')
 </head>
 
@@ -67,7 +68,7 @@
     <script src="{{ url('') }}/asset_dashboard/dist/js/adminlte.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{ url('') }}/asset_dashboard/dist/js/demo.js"></script>
-
+    @livewireScripts
     @yield('script')
 </body>
 
