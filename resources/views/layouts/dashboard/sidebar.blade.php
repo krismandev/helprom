@@ -17,7 +17,7 @@
             <!-- Add icons to the links using the .nav-icon class
  with font-awesome or any other icon font library -->
             <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="#" class="nav-link {{ $title == 'Dashboard' ? 'active' : '' }}">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>
                         Dashboard
@@ -26,8 +26,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/users" class="nav-link">
-
+                <a href="/users" class="nav-link {{ $title == 'Users' ? 'active' : '' }}">
                     <i class="nav-icon fas fa-user"></i>
                     <p>
                         Users
@@ -35,7 +34,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/category" class="nav-link">
+                <a href="/category" class="nav-link {{ $title == 'Categories' ? 'active' : '' }}">
                     <i class="nav-icon fas fa-copy"></i>
                     <p>
                         Categories
@@ -43,7 +42,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/articles" class="nav-link">
+                <a href="/articles" class="nav-link {{ $title == 'Articles' ? 'active' : '' }}">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
                         Articles
@@ -52,7 +51,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/patients" class="nav-link">
+                <a href="/patients" class="nav-link {{ $title == 'Patients' ? 'active' : '' }}">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
                         Patients
@@ -60,7 +59,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/screening" class="nav-link">
+                <a href="/screening" class="nav-link {{ $title == 'Screening' ? 'active' : '' }}">
 
                     <i class="nav-icon fas fa-table"></i>
                     <p>
@@ -69,7 +68,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/gallery" class="nav-link">
+                <a href="/gallery" class="nav-link {{ $title == 'Gallery' ? 'active' : '' }}">
                     <i class="nav-icon far fa-image"></i>
                     <p>
                         Gallery

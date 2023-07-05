@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticlesController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +35,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     });
+
+    //categories
+    Route::get('/category', [CategoryController::class, 'index']);
 
     //articles
     Route::get('/articles', [ArticlesController::class, 'index']);
