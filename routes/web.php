@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticlesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +34,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     });
+
+    //articles
+    Route::get('/articles', [ArticlesController::class, 'index']);
     //logout
     Route::get('/logout', function () {
         Auth()->logout();
