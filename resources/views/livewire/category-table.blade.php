@@ -17,10 +17,11 @@
 
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table class="table table-bordered table-responsive">
+                            <table class="table table-bordered table-responsive" style="display:table">
                                 <thead>
                                     <tr>
-                                        <th style="width: 10px">#</th>
+                                        <th style="width:
+                                    10px">#</th>
                                         <th>Nama</th>
                                         <th>Deskripsi</th>
                                         <th>Gambar</th>
@@ -41,18 +42,20 @@
                                                 </td>
                                                 <td>
                                                     <div style="display: flex; justify-content:space-between; ">
-                                                        <a href="" class="btn btn-info" style="margin-right:2px">
+                                                        <button wire:click="edit('{{ $item->slug }}')"
+                                                            class="btn btn-info" style="margin-right:2px">
                                                             <i class="fas fa-edit "></i>
-                                                        </a>
-                                                        <a href="" class="btn btn-danger"><i
-                                                                class="fas fa-trash-alt"></i></a>
+                                                        </button>
+                                                        <button wire:click="deleteConfirmation('{{ $item->slug }}')"
+                                                            class="btn btn-danger"><i
+                                                                class="fas fa-trash-alt"></i></button>
                                                     </div>
                                                 </td>
                                             </tr>
                                         @endforeach
                                     @else
                                         <tr>
-                                            <td colspan="4" align="center">Tidak ada data</td>
+                                            <td colspan="5" align="center">Tidak ada data</td>
                                         </tr>
                                     @endif
 
@@ -78,6 +81,13 @@
         <script>
             window.addEventListener('close-input-modal', event => {
                 $('#modalTambah').modal('hide');
+            });
+
+            window.addEventListener('show-edit-modal', event => {
+                $('#modalEdit').modal('show');
+            });
+            window.addEventListener('close-edit-modal', event => {
+                $('#modalEdit').modal('hide');
             });
         </script>
     @endsection

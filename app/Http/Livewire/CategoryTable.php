@@ -5,15 +5,16 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Category;
 use Illuminate\Support\Str;
-use Livewire\WithFileUploads;
 use Livewire\WithPagination;
+use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryTable extends Component
 {
     use WithFileUploads;
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
-    public $nama, $image, $description, $category_edit_id, $category_delete_id;
+    public $nama, $image, $description, $existImage, $category_edit_id, $category_delete_id;
     public function rules()
     {
         if ($this->category_edit_id !== null) {
@@ -85,23 +86,44 @@ class CategoryTable extends Component
     }
 
     //show modal edit
-    public function edit($id)
+    public function edit($slug)
     {
-        $category = Category::find($id);
-        $this->nama = $category->nama;
-        $this->image = $category->image;
-        $this->category_edit_id = $id;
+        $category = Category::where('slug', $slug)->first();
+        $this->nama = $category->name;
+        $this->description = $category->description;
+        $this->image = null;
+        $this->existImage = $category->image;
+        $this->category_edit_id = $category->id;
         $this->dispatchBrowserEvent('show-edit-modal');
     }
 
     //Update data
     public function update()
     {
-        $this->validate([
-            'nama' => 'required|unique:mata_pelajarans,nama,' . $this->mapel_edit_id,
-        ]);
-        Category::where('id', $this->mapel_edit_id)->update([
-            'nama' => $this->nama,
+        if ($this->image) {
+            $validation = [
+                'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+                'description' => 'required',
+                'nama' => 'required|unique:categories,name,' . $this->category_edit_id,
+            ];
+        } else {
+            $validation = [
+                'description' => 'required',
+                'nama' => 'required|unique:categories,name,' . $this->category_edit_id,
+            ];
+        }
+        $this->validate($validation);
+
+        if ($this->image) {
+            Storage::delete($this->existImage);
+            $this->existImage = $this->image->store('images');
+        }
+        $slug = Str::slug($this->nama);
+        Category::where('id', $this->category_edit_id)->update([
+            'name' => $this->nama,
+            'description' => $this->description,
+            'slug' => $slug,
+            'image' => $this->existImage
         ]);
         session()->flash('message', 'Data berhasil diedit !');
         $this->empty();
