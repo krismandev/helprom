@@ -219,7 +219,7 @@
                 console.log("Masuk Nih");
                 $('#summernote').summernote({
                     tabsize: 2,
-                    height: 100,
+                    height: 300,
                     toolbar: [
                         ['style', ['style']],
                         ['font', ['bold', 'underline', 'clear']],

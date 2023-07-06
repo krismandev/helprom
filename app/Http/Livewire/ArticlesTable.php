@@ -16,7 +16,7 @@ class ArticlesTable extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
     public $title, $image, $content, $category_id, $existImage, $article_edit_id, $article_delete_id;
-    public $add = true, $edit = false;
+    public $add = false, $edit = false;
     public function rules()
     {
         if ($this->article_edit_id !== null) {
