@@ -4,9 +4,10 @@
             <p class="login-box-msg">Login untuk masuk kedalam sistem</p>
             @if (session()->has('loginError'))
                 <div class="mb-2">
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h5><i class="icon fas fa-ban"></i>Peringatan !</h5>
                         {{ session('loginError') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 </div>
             @endif

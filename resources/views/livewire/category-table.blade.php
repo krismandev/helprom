@@ -7,6 +7,14 @@
                         <div class="card-header">
                             <button class="btn btn-primary" data-toggle="modal" data-target="#modalTambah">Tambah</button>
                         </div>
+                        @if (session()->has('message'))
+                            <div class="alert alert-success alert-dismissible mx-3 mt-2">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <h5><i class="icon fas fa-check"></i>Pesan</h5>
+                                {{ session('message') }}
+                            </div>
+                        @endif
+
                         <!-- /.card-header -->
                         <div class="card-body">
                             <table class="table table-bordered table-responsive">
