@@ -18,4 +18,8 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+
+
+    <!-- Main content -->
+    <livewire:category-table />
 @endsection

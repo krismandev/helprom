@@ -1,5 +1,11 @@
 @extends('layouts.dashboard.main')
 
+@section('script')
+    <!-- Sparkline -->
+    <script src="{{ url('') }}/asset_dashboard/plugins/sparklines/sparkline.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="{{ url('') }}/asset_dashboard/dist/js/pages/dashboard.js"></script>
+@endsection
 @section('content')
     <!-- Content Header (Page header) -->
     <div class="content-header">

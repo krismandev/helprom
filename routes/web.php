@@ -33,7 +33,9 @@ Route::group(['middleware' => 'guest'], function () {
 Route::group(['middleware' => 'auth'], function () {
     //dashboard
     Route::get('/dashboard', function () {
-        return view('admin.dashboard');
+        return view('admin.dashboard', [
+            'title' => 'Dashboard'
+        ]);
     });
 
     //categories
