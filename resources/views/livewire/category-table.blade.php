@@ -9,11 +9,12 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <table class="table table-bordered">
+                            <table class="table table-bordered table-responsive">
                                 <thead>
                                     <tr>
                                         <th style="width: 10px">#</th>
                                         <th>Nama</th>
+                                        <th>Deskripsi</th>
                                         <th>Gambar</th>
                                         <th>Aksi</th>
                                     </tr>
@@ -22,14 +23,22 @@
                                     @if (count($categories) !== 0)
                                         @foreach ($categories as $item)
                                             <tr>
-                                                <td>1.</td>
-                                                <td>{{ $item->nama }}</td>
+                                                <td>{{ ($categories->currentpage() - 1) * $categories->perpage() + $loop->index + 1 }}
+                                                </td>
+                                                <td>{{ $item->name }}</td>
+                                                <td>{{ $item->description }}</td>
                                                 <td>
-                                                    <img src="" alt="img.jpg">
+                                                    <img src="{{ asset('storage/' . $item->image) }}" alt="img.jpg"
+                                                        width="200">
                                                 </td>
                                                 <td>
-                                                    <a href="" class="btn btn-info">Ubah</a>
-                                                    <a href="" class="btn btn-danger">Hapus</a>
+                                                    <div style="display: flex; justify-content:space-between; ">
+                                                        <a href="" class="btn btn-info" style="margin-right:2px">
+                                                            <i class="fas fa-edit "></i>
+                                                        </a>
+                                                        <a href="" class="btn btn-danger"><i
+                                                                class="fas fa-trash-alt"></i></a>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -45,11 +54,9 @@
                         <!-- /.card-body -->
                         <div class="card-footer clearfix">
                             <ul class="pagination pagination-sm m-0 float-right">
-                                <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                                @if (count($categories) != 0)
+                                    {{ $categories->links() }}
+                                @endif
                             </ul>
                         </div>
                     </div>
@@ -80,6 +87,17 @@
                         @enderror"
                                 id="kategori" name="nama" wire:model="nama" placeholder="Kategori">
                             @error('nama')
+                                <span class="invalid-feedback">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Deskripsi</label>
+                            <textarea name="description" id="description"
+                                class="form-control @error('description')
+                            is-invalid
+                        @enderror"
+                                wire:model="description"></textarea>
+                            @error('description')
                                 <span class="invalid-feedback">{{ $message }}</span>
                             @enderror
                         </div>
@@ -138,7 +156,7 @@
 
     @section('script')
         <script>
-            window.addEventListener('close--input-modal', event => {
+            window.addEventListener('close-input-modal', event => {
                 $('#modalTambah').modal('hide');
             });
         </script>
