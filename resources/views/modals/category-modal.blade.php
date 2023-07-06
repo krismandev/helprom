@@ -1,4 +1,3 @@
-@if ($category_edit_id)
     <!-- Modal Edit-->
     <div class="modal fade" id="modalEdit" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
         wire:ignore.self aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -7,7 +6,8 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="modalEditTitle">Edit Kategori</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                            wire:click="empty()">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -86,23 +86,49 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                            wire:click="empty()">Close</button>
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
-@else
-    <!-- Modal Tambah-->
-    <div class="modal fade" id="modalTambah" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
+    <!-- Modal Edit-->
+    <div class="modal fade" id="modalDelete" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
         wire:ignore.self aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header  bg-danger">
+                    <h5 class="modal-title" id="modalEditTitle">Hapus Kategori</h5>
+                    <button type="button" class="close" data-dismiss="modal" wire:click="empty()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h6>Apakah anda yakin ingin menghapus kategori ?</h6>
+                    <p style="color: red; font-size: 14px">Catatan : Kategori tidak akan dapat dihapus apabila digunakan
+                        didalam sistem. Hal ini bertujuan untuk mempertahankan integritas data !</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" wire:click="empty()"
+                        data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger" data-dismiss="modal"
+                        wire:click="deleteData()">Hapus</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Tambah-->
+    <div class="modal fade" id="modalTambah" data-backdrop="static" data-keyboard="false" tabindex="-1"
+        role="dialog" wire:ignore.self aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog" role="document">
             <form role="form" wire:submit.prevent="save">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="modalEditTitle">Tambah Kategori</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                            wire:click="empty()">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -154,17 +180,16 @@
                             <br>
                         </div>
                         <div>
-
                             Photo Preview:
                             @if ($image != null)
-                                <div class="row">
-                                    <div class="col-3 card me-1 mb-1">
+                                <div class="row mx-1">
+                                    <div class="col-3 card me-1">
                                         <img src="{{ $image->temporaryUrl() }}">
                                     </div>
                                 </div>
                             @else
-                                <div class="row">
-                                    <div class="col-3 card me-1 mb-1">
+                                <div class="row mx-1">
+                                    <div class="col-3 card me-1">
                                         <img
                                             src="https://www.gme.net.au/app/plugins/wp-media-folder/assets/images/default.png">
                                     </div>
@@ -174,11 +199,11 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                            wire:click="empty()">Close</button>
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
-@endif

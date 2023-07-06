@@ -14,6 +14,13 @@
                                 {{ session('message') }}
                             </div>
                         @endif
+                        @if (session()->has('error'))
+                            <div class="alert alert-success alert-dismissible mx-3 mt-2">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <h5><i class="icon fas fa-ban"></i>Pesan</h5>
+                                {{ session('message') }}
+                            </div>
+                        @endif
 
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -41,7 +48,7 @@
                                                         width="200">
                                                 </td>
                                                 <td>
-                                                    <div style="display: flex; justify-content:space-between; ">
+                                                    <div style="display: flex;">
                                                         <button wire:click="edit('{{ $item->slug }}')"
                                                             class="btn btn-info" style="margin-right:2px">
                                                             <i class="fas fa-edit "></i>
@@ -82,12 +89,14 @@
             window.addEventListener('close-input-modal', event => {
                 $('#modalTambah').modal('hide');
             });
-
             window.addEventListener('show-edit-modal', event => {
                 $('#modalEdit').modal('show');
             });
             window.addEventListener('close-edit-modal', event => {
                 $('#modalEdit').modal('hide');
+            });
+            window.addEventListener('show-delete-confirmation-modal', event => {
+                $('#modalDelete').modal('show');
             });
         </script>
     @endsection

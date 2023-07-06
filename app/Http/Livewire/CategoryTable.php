@@ -41,6 +41,7 @@ class CategoryTable extends Component
         $this->nama = null;
         $this->image = null;
         $this->description = null;
+        $this->category_edit_id = null;
         $this->category_delete_id = null;
         $this->resetErrorBag();
         $this->resetValidation();
@@ -131,27 +132,25 @@ class CategoryTable extends Component
     }
 
     //Show modal delete confirmation
-    public function deleteConfirmation($id)
+    public function deleteConfirmation($slug)
     {
-        $this->category_delete_id = $id; //tahun_akademik id
+        $this->category_delete_id = Category::where('slug', $slug)->first()->id; //tahun_akademik id
 
         $this->dispatchBrowserEvent('show-delete-confirmation-modal');
     }
 
     //Delete data
-    public function deleteKelasData()
+    public function deleteData()
     {
         $category = Category::where('id', $this->category_delete_id)->first();
         try {
+            Storage::delete($category->image);
             $category->delete();
             session()->flash('message', 'Data berhasil dihapus');
         } catch (\Throwable $th) {
             session()->flash('error', 'Data gagal dihapus karena digunakan di dalam sistem');
         }
-
-        $this->dispatchBrowserEvent('close-modal-delete');
-
-        $this->category_delete_id = '';
+        $this->category_delete_id = null;
     }
 
     public function updatingSearch()
