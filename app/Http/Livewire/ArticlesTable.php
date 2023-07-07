@@ -8,6 +8,7 @@ use App\Models\Category;
 use Illuminate\Support\Str;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class ArticlesTable extends Component
@@ -73,11 +74,28 @@ class ArticlesTable extends Component
     public function add()
     {
         $this->add = true;
+        $this->empty();
         $this->dispatchBrowserEvent('refresh-summernote');
     }
+
+    public function change($slug)
+    {
+        $article = Articles::where('slug', $slug)->first();
+        $this->title = $article->title;
+        $this->content = $article->content;
+        $this->category_id = $article->category_id;
+        $this->image = null;
+        $this->existImage = $article->image_path;
+        $this->article_edit_id = $article->id;
+        $this->edit = true;
+        $this->dispatchBrowserEvent('refresh-summernote');
+    }
+
     public function back()
     {
+        $this->empty();
         $this->add = false;
+        $this->edit = false;
     }
 
     public function save()
@@ -93,13 +111,15 @@ class ArticlesTable extends Component
         $content = $this->content;
         $dom = new \DomDocument();
         $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+
         $imageFile = $dom->getElementsByTagName('img');
+
         foreach ($imageFile as $item => $image) {
             $data = $image->getAttribute('src');
             list($type, $data) = explode(';', $data);
             list(, $data)      = explode(',', $data);
             $imgeData = base64_decode($data);
-            $image_name = "/images/" . time() . $item . '.png';
+            $image_name = "/article-images/" . time() . $item . '.png';
             $path = public_path() . $image_name;
             file_put_contents($path, $imgeData);
             $image->removeAttribute('src');
@@ -116,34 +136,36 @@ class ArticlesTable extends Component
         ]);
         $this->add = false;
         session()->flash('message', 'Data berhasil ditambahkan !');
+        $this->dispatchBrowserEvent('to-top');
         $this->empty();
     }
 
-    //show modal edit
-    public function edit($slug)
-    {
-        $category = Articles::where('slug', $slug)->first();
-        $this->title = $category->name;
-        $this->content = $category->content;
-        $this->image = null;
-        $this->existImage = $category->image;
-        $this->article_edit_id = $category->id;
-        $this->dispatchBrowserEvent('show-edit-modal');
-    }
+    // public function edit($slug)
+    // {
+    //     $category = Articles::where('slug', $slug)->first();
+    //     $this->title = $category->name;
+    //     $this->content = $category->content;
+    //     $this->image = null;
+    //     $this->existImage = $category->image;
+    //     $this->article_edit_id = $category->id;
+    //     $this->dispatchBrowserEvent('show-edit-modal');
+    // }
 
     //Update data
     public function update()
     {
         if ($this->image) {
             $validation = [
+                'title' => 'required|unique:articles,title,' . $this->article_edit_id,
+                'category_id' => 'required',
                 'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
                 'content' => 'required',
-                'title' => 'required|unique:articles,title,' . $this->article_edit_id,
             ];
         } else {
             $validation = [
-                'content' => 'required',
                 'title' => 'required|unique:articles,title,' . $this->article_edit_id,
+                'category_id' => 'required',
+                'content' => 'required',
             ];
         }
         $this->validate($validation);
@@ -153,15 +175,52 @@ class ArticlesTable extends Component
             $this->existImage = $this->image->store('images');
         }
         $slug = Str::slug($this->title);
+
+        //DELETE IMAGE BEFORE CONTENT
+        $before = Articles::find($this->article_edit_id)->content;
+        // dd($before);
+        libxml_use_internal_errors(true);
+        $dom = new \DomDocument();
+        $dom->loadHtml($before);
+        $imageFile = $dom->getElementsByTagName('img');
+        foreach ($imageFile as $item => $image) {
+            $data = $image->getAttribute('src');
+            File::delete(public_path() . $data);
+        }
+
+        //SAVE NEW CONTENT
+
+        libxml_use_internal_errors(true);
+        $content = $this->content;
+        $dom = new \DomDocument();
+        $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+
+        $imageFile = $dom->getElementsByTagName('img');
+
+        foreach ($imageFile as $item => $image) {
+            $data = $image->getAttribute('src');
+            list($type, $data) = explode(';', $data);
+            list(, $data)      = explode(',', $data);
+            $imgeData = base64_decode($data);
+            $image_name = "/article-images/" . time() . $item . '.png';
+            $path = public_path() . $image_name;
+            file_put_contents($path, $imgeData);
+            $image->removeAttribute('src');
+            $image->setAttribute('src', $image_name);
+        }
+        $content = $dom->saveHTML();
         Articles::where('id', $this->article_edit_id)->update([
-            'name' => $this->title,
-            'content' => $this->content,
+            'title' => $this->title,
+            'content' => $content,
+            'category_id' => $this->category_id,
             'slug' => $slug,
-            'image' => $this->existImage
+            'image_path' => $this->existImage
         ]);
+
+        $this->edit = false;
         session()->flash('message', 'Data berhasil diedit !');
         $this->empty();
-        $this->dispatchBrowserEvent('close-edit-modal');
+        $this->dispatchBrowserEvent('to-top');
     }
 
     //Show modal delete confirmation
@@ -175,11 +234,22 @@ class ArticlesTable extends Component
     //Delete data
     public function deleteData()
     {
-        $category = Articles::where('id', $this->article_delete_id)->first();
+        $article = Articles::where('id', $this->article_delete_id)->first();
         try {
-            Storage::delete($category->image);
-            $category->delete();
+            //DELETE IMAGE BEFORE CONTENT
+            $before = Articles::find($this->article_delete_id)->content;
+            libxml_use_internal_errors(true);
+            $dom = new \DomDocument();
+            $dom->loadHtml($before);
+            $imageFile = $dom->getElementsByTagName('img');
+            foreach ($imageFile as $item => $image) {
+                $data = $image->getAttribute('src');
+                File::delete(public_path() . $data);
+            }
+            Storage::delete($article->image_path);
+            $article->delete();
             session()->flash('message', 'Data berhasil dihapus');
+            $this->dispatchBrowserEvent('to-top');
         } catch (\Throwable $th) {
             session()->flash('error', 'Data gagal dihapus karena digunakan di dalam sistem');
         }
