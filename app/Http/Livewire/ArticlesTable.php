@@ -51,6 +51,7 @@ class ArticlesTable extends Component
         $this->article_edit_id = null;
         $this->article_delete_id = null;
         $this->dispatchBrowserEvent('to-top');
+        $this->resetPage();
         $this->resetErrorBag();
         $this->resetValidation();
     }
@@ -77,6 +78,7 @@ class ArticlesTable extends Component
     {
         $this->add = true;
         $this->empty();
+
         $this->dispatchBrowserEvent('refresh-summernote');
     }
 
@@ -90,6 +92,7 @@ class ArticlesTable extends Component
         $this->existImage = $article->image_path;
         $this->article_edit_id = $article->id;
         $this->edit = true;
+        $this->resetPage();
         $this->dispatchBrowserEvent('to-top');
         $this->dispatchBrowserEvent('refresh-summernote');
     }
@@ -117,29 +120,18 @@ class ArticlesTable extends Component
         $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
         libxml_clear_errors();
         $imageFile = $dom->getElementsByTagName('img');
-        $storage = "storage/content-article";
         foreach ($imageFile as $item => $image) {
             $data = $image->getAttribute('src');
             if (preg_match('/data:image/', $data)) {
-                preg_match('/data:image\/(?<mime>.*?)\;/', $data, $groups);
-                $mimeType = $groups('mime');
-                $fileNameContent = uniqid();
-                $fileNameContentRand = substr(md5($fileNameContent), 6, 6) . '_' . time();
-                $filePath = ("$storage/$fileNameContentRand.$mimeType");
-                $image = Image::make($data)->encode($mimeType, 100)->save(public_path($filePath));
-                $newSrc = asset($filePath);
+                list($type, $data) = explode(';', $data);
+                list(, $data)      = explode(',', $data);
+                $imgeData = base64_decode($data);
+                $image_name = "/article-images/" . time() . $item . '.png';
+                $path = public_path() . $image_name;
+                file_put_contents($path, $imgeData);
                 $image->removeAttribute('src');
-                $image->setAttribute('src', $newSrc);
-                $image->setAttribute('class', 'img-responsive');
+                $image->setAttribute('src', $image_name);
             }
-            // list($type, $data) = explode(';', $data);
-            // list(, $data)      = explode(',', $data);
-            // $imgeData = base64_decode($data);
-            // $image_name = "/article-images/" . time() . $item . '.png';
-            // $path = public_path() . $image_name;
-            // file_put_contents($path, $imgeData);
-            // $image->removeAttribute('src');
-            // $image->setAttribute('src', $image_name);
         }
         $content = $dom->saveHTML();
 
@@ -198,6 +190,7 @@ class ArticlesTable extends Component
         $dom = new \DomDocument();
         $dom->loadHtml($before);
         $imageFile = $dom->getElementsByTagName('img');
+        $storage = "storage/content-article";
         foreach ($imageFile as $item => $image) {
             $data = $image->getAttribute('src');
             File::delete(public_path() . $data);
@@ -214,14 +207,16 @@ class ArticlesTable extends Component
 
         foreach ($imageFile as $item => $image) {
             $data = $image->getAttribute('src');
-            list($type, $data) = explode(';', $data);
-            list(, $data)      = explode(',', $data);
-            $imgeData = base64_decode($data);
-            $image_name = "/article-images/" . time() . $item . '.png';
-            $path = public_path() . $image_name;
-            file_put_contents($path, $imgeData);
-            $image->removeAttribute('src');
-            $image->setAttribute('src', $image_name);
+            if (preg_match('/data:image/', $data)) {
+                list($type, $data) = explode(';', $data);
+                list(, $data)      = explode(',', $data);
+                $imgeData = base64_decode($data);
+                $image_name = "/article-images/" . time() . $item . '.png';
+                $path = public_path() . $image_name;
+                file_put_contents($path, $imgeData);
+                $image->removeAttribute('src');
+                $image->setAttribute('src', $image_name);
+            }
         }
         $content = $dom->saveHTML();
         Articles::where('id', $this->article_edit_id)->update([
