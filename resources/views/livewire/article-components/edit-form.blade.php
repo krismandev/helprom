@@ -46,6 +46,21 @@
                                 <span style="color:red; font-size:12px">{{ $message }}</span>
                             @enderror
                             <div class="form-group">
+                                <label>Atur Sebagai Artikel Unggulan</label>
+                                <select
+                                    class="form-control @error('unggulan')
+                                        is-invalid
+                                      @enderror"
+                                    id="unggulan" name="unggulan" wire:model="unggulan">
+                                    <option value="1">Ya</option>
+                                    <option value="0">Tidak</option>
+                                </select>
+                                @error('unggulan')
+                                    <span class="invalid-feedback">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
                                 <label for="image">Gambar</label>
                                 <div class="input-group">
                                     <div class="custom-file">

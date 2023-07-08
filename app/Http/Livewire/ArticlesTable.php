@@ -17,7 +17,7 @@ class ArticlesTable extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
     public $title, $image, $content, $category_id, $existImage, $article_edit_id, $article_delete_id;
-    public $add = false, $edit = false;
+    public $add = false, $edit = false, $unggulan = 0;
     public function rules()
     {
         if ($this->article_edit_id !== null) {
@@ -90,6 +90,7 @@ class ArticlesTable extends Component
         $this->image = null;
         $this->existImage = $article->image_path;
         $this->article_edit_id = $article->id;
+        $this->unggulan = $article->featured;
         $this->edit = true;
         $this->resetPage();
         $this->dispatchBrowserEvent('to-top');
@@ -139,6 +140,7 @@ class ArticlesTable extends Component
             'slug' => $slug,
             'category_id' => $this->category_id,
             'content' => $content,
+            'featured' => $this->unggulan,
             'image_path' => $imagePath
         ]);
         $this->add = false;
@@ -222,6 +224,7 @@ class ArticlesTable extends Component
             'title' => $this->title,
             'content' => $content,
             'category_id' => $this->category_id,
+            'featured' => $this->unggulan,
             'slug' => $slug,
             'image_path' => $this->existImage
         ]);
