@@ -9,8 +9,8 @@ use Illuminate\Support\Str;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\File;
+use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
-use Intervention\Image\ImageManagerStatic as Image;
 
 class ArticlesTable extends Component
 {
@@ -120,22 +120,26 @@ class ArticlesTable extends Component
         $storage = "storage/content-article";
         foreach ($imageFile as $item => $image) {
             $data = $image->getAttribute('src');
-            if (preg_match('data:image', $data)) {
+            if (preg_match('/data:image/', $data)) {
                 preg_match('/data:image\/(?<mime>.*?)\;/', $data, $groups);
                 $mimeType = $groups('mime');
                 $fileNameContent = uniqid();
                 $fileNameContentRand = substr(md5($fileNameContent), 6, 6) . '_' . time();
                 $filePath = ("$storage/$fileNameContentRand.$mimeType");
                 $image = Image::make($data)->encode($mimeType, 100)->save(public_path($filePath));
+                $newSrc = asset($filePath);
+                $image->removeAttribute('src');
+                $image->setAttribute('src', $newSrc);
+                $image->setAttribute('class', 'img-responsive');
             }
-            list($type, $data) = explode(';', $data);
-            list(, $data)      = explode(',', $data);
-            $imgeData = base64_decode($data);
-            $image_name = "/article-images/" . time() . $item . '.png';
-            $path = public_path() . $image_name;
-            file_put_contents($path, $imgeData);
-            $image->removeAttribute('src');
-            $image->setAttribute('src', $image_name);
+            // list($type, $data) = explode(';', $data);
+            // list(, $data)      = explode(',', $data);
+            // $imgeData = base64_decode($data);
+            // $image_name = "/article-images/" . time() . $item . '.png';
+            // $path = public_path() . $image_name;
+            // file_put_contents($path, $imgeData);
+            // $image->removeAttribute('src');
+            // $image->setAttribute('src', $image_name);
         }
         $content = $dom->saveHTML();
 
