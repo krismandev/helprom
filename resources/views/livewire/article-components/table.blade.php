@@ -29,7 +29,7 @@
                                     <th style="width:
                           10px">#</th>
                                     <th>Judul</th>
-                                    <th>Konten</th>
+                                    {{-- <th>Konten</th> --}}
                                     <th>Gambar</th>
                                     <th>Kategori</th>
                                     <th>Aksi</th>
@@ -42,9 +42,9 @@
                                             <td>{{ ($articles->currentpage() - 1) * $articles->perpage() + $loop->index + 1 }}
                                             </td>
                                             <td>{{ $item->title }}</td>
-                                            <td>
+                                            {{-- <td>
                                                 {!! $item->content !!}
-                                            </td>
+                                            </td> --}}
                                             <td>
                                                 <img src="{{ asset('storage/' . $item->image_path) }}" alt="img.jpg"
                                                     width="200">
@@ -64,7 +64,7 @@
                                     @endforeach
                                 @else
                                     <tr>
-                                        <td colspan="6" align="center">Tidak ada data</td>
+                                        <td colspan="5" align="center">Tidak ada data</td>
                                     </tr>
                                 @endif
 

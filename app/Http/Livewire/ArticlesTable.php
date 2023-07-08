@@ -49,6 +49,7 @@ class ArticlesTable extends Component
         $this->category_id = null;
         $this->article_edit_id = null;
         $this->article_delete_id = null;
+        $this->dispatchBrowserEvent('to-top');
         $this->resetErrorBag();
         $this->resetValidation();
     }
@@ -88,6 +89,7 @@ class ArticlesTable extends Component
         $this->existImage = $article->image_path;
         $this->article_edit_id = $article->id;
         $this->edit = true;
+        $this->dispatchBrowserEvent('to-top');
         $this->dispatchBrowserEvent('refresh-summernote');
     }
 
@@ -136,7 +138,6 @@ class ArticlesTable extends Component
         ]);
         $this->add = false;
         session()->flash('message', 'Data berhasil ditambahkan !');
-        $this->dispatchBrowserEvent('to-top');
         $this->empty();
     }
 
@@ -220,7 +221,6 @@ class ArticlesTable extends Component
         $this->edit = false;
         session()->flash('message', 'Data berhasil diedit !');
         $this->empty();
-        $this->dispatchBrowserEvent('to-top');
     }
 
     //Show modal delete confirmation
