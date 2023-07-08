@@ -43,9 +43,9 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="index3.html" class="brand-link">
-                <img src="{{ url('') }}/asset_dashboard/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
+                <img src="{{ url('') }}/asset_dashboard/images/logo.png" alt="Helprom Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">AdminLTE 3</span>
+                <span class="brand-text font-weight-light">Helprom</span>
             </a>
 
             {{-- SIDEBAR --}}
@@ -58,10 +58,10 @@
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
+            <strong>Copyright &copy; 2023 <a href="/">Helprom</a>.</strong>
             All rights reserved.
             <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 3.0.4
+                <b>Version</b> 1.0.0
             </div>
         </footer>
 
