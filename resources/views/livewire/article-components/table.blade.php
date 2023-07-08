@@ -32,6 +32,7 @@
                                     {{-- <th>Konten</th> --}}
                                     <th>Gambar</th>
                                     <th>Kategori</th>
+                                    <th>Unggulan</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -50,6 +51,7 @@
                                                     width="200">
                                             </td>
                                             <td>{{ $item->category->name }}</td>
+                                            <td>{{ $item->featured == true ? 'Ya' : 'Tidak' }}</td>
                                             <td>
                                                 <div style="display: flex;">
                                                     <button wire:click="change('{{ $item->slug }}')"

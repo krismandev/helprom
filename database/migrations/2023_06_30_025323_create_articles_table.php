@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('slug');
             $table->string('image_path');
             $table->string('content');
+            $table->boolean('featured')->default(false);
             $table->foreignId('category_id')->constrained('categories');
             $table->timestamps();
         });

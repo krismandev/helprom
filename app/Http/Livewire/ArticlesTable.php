@@ -10,6 +10,7 @@ use Livewire\WithPagination;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class ArticlesTable extends Component
 {
@@ -111,13 +112,22 @@ class ArticlesTable extends Component
         $imagePath = $this->image->store('images');
         $slug = Str::slug($this->title);
         $content = $this->content;
+        libxml_use_internal_errors(true);
         $dom = new \DomDocument();
         $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-
+        libxml_clear_errors();
         $imageFile = $dom->getElementsByTagName('img');
-
+        $storage = "storage/content-article";
         foreach ($imageFile as $item => $image) {
             $data = $image->getAttribute('src');
+            if (preg_match('data:image', $data)) {
+                preg_match('/data:image\/(?<mime>.*?)\;/', $data, $groups);
+                $mimeType = $groups('mime');
+                $fileNameContent = uniqid();
+                $fileNameContentRand = substr(md5($fileNameContent), 6, 6) . '_' . time();
+                $filePath = ("$storage/$fileNameContentRand.$mimeType");
+                $image = Image::make($data)->encode($mimeType, 100)->save(public_path($filePath));
+            }
             list($type, $data) = explode(';', $data);
             list(, $data)      = explode(',', $data);
             $imgeData = base64_decode($data);
