@@ -9,7 +9,6 @@ use Illuminate\Support\Str;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\File;
-use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 
 class ArticlesTable extends Component
