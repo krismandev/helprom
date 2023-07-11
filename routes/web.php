@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\CategoryController;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +18,10 @@ use Illuminate\Support\Facades\Route;
 
 //route free access
 Route::get('/', function () {
-    return "Halaman Awal Depan";
+    return view('layouts.homepage.main', [
+        'title' => 'Home',
+        'categories' => Category::all()
+    ]);
 });
 
 

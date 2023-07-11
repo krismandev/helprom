@@ -144,8 +144,8 @@ class CategoryTable extends Component
     {
         $category = Category::where('id', $this->category_delete_id)->first();
         try {
-            Storage::delete($category->image);
             $category->delete();
+            // Storage::delete($category->image);
             session()->flash('message', 'Data berhasil dihapus');
         } catch (\Throwable $th) {
             session()->flash('error', 'Data gagal dihapus karena digunakan di dalam sistem');

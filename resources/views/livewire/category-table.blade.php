@@ -15,10 +15,10 @@
                             </div>
                         @endif
                         @if (session()->has('error'))
-                            <div class="alert alert-success alert-dismissible mx-3 mt-2">
+                            <div class="alert alert-danger alert-dismissible mx-3 mt-2">
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                                 <h5><i class="icon fas fa-ban"></i>Pesan</h5>
-                                {{ session('message') }}
+                                {{ session('error') }}
                             </div>
                         @endif
 
