@@ -2,7 +2,7 @@
     <nav class="navbar navbar-expand-lg navigation" id="navbar" style="background-color: rgb(243, 92, 36)">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <img src="{{ url('') }}/asset_dashboard/images/logo.png" alt="" class="img-fluid"
+                <img src="{{ url('') }}/asset/dashboard/images/logo.png" alt="" class="img-fluid"
                     width="50px">
                 <h5 class="d-inline">Helprom</h5>
             </a>

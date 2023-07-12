@@ -2,9 +2,9 @@
 
 @section('script')
     <!-- Sparkline -->
-    <script src="{{ url('') }}/asset_dashboard/plugins/sparklines/sparkline.js"></script>
+    <script src="{{ url('') }}/asset/dashboard/plugins/sparklines/sparkline.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="{{ url('') }}/asset_dashboard/dist/js/pages/dashboard.js"></script>
+    <script src="{{ url('') }}/asset/dashboard/dist/js/pages/dashboard.js"></script>
 @endsection
 @section('content')
     <!-- Content Header (Page header) -->
@@ -160,7 +160,7 @@
                                     </div>
                                     <!-- /.direct-chat-infos -->
                                     <img class="direct-chat-img"
-                                        src="{{ url('') }}/asset_dashboard/dist/img/user1-128x128.jpg"
+                                        src="{{ url('') }}/asset/dashboard/dist/img/user1-128x128.jpg"
                                         alt="message user image">
                                     <!-- /.direct-chat-img -->
                                     <div class="direct-chat-text">
@@ -178,7 +178,7 @@
                                     </div>
                                     <!-- /.direct-chat-infos -->
                                     <img class="direct-chat-img"
-                                        src="{{ url('') }}/asset_dashboard/dist/img/user3-128x128.jpg"
+                                        src="{{ url('') }}/asset/dashboard/dist/img/user3-128x128.jpg"
                                         alt="message user image">
                                     <!-- /.direct-chat-img -->
                                     <div class="direct-chat-text">
@@ -196,7 +196,7 @@
                                     </div>
                                     <!-- /.direct-chat-infos -->
                                     <img class="direct-chat-img"
-                                        src="{{ url('') }}/asset_dashboard/dist/img/user1-128x128.jpg"
+                                        src="{{ url('') }}/asset/dashboard/dist/img/user1-128x128.jpg"
                                         alt="message user image">
                                     <!-- /.direct-chat-img -->
                                     <div class="direct-chat-text">
@@ -214,7 +214,7 @@
                                     </div>
                                     <!-- /.direct-chat-infos -->
                                     <img class="direct-chat-img"
-                                        src="{{ url('') }}/asset_dashboard/dist/img/user3-128x128.jpg"
+                                        src="{{ url('') }}/asset/dashboard/dist/img/user3-128x128.jpg"
                                         alt="message user image">
                                     <!-- /.direct-chat-img -->
                                     <div class="direct-chat-text">
@@ -233,7 +233,7 @@
                                     <li>
                                         <a href="#">
                                             <img class="contacts-list-img"
-                                                src="{{ url('') }}/asset_dashboard/dist/img/user1-128x128.jpg">
+                                                src="{{ url('') }}/asset/dashboard/dist/img/user1-128x128.jpg">
 
                                             <div class="contacts-list-info">
                                                 <span class="contacts-list-name">
@@ -250,7 +250,7 @@
                                     <li>
                                         <a href="#">
                                             <img class="contacts-list-img"
-                                                src="{{ url('') }}/asset_dashboard/dist/img/user7-128x128.jpg">
+                                                src="{{ url('') }}/asset/dashboard/dist/img/user7-128x128.jpg">
 
                                             <div class="contacts-list-info">
                                                 <span class="contacts-list-name">
@@ -266,7 +266,7 @@
                                     <li>
                                         <a href="#">
                                             <img class="contacts-list-img"
-                                                src="{{ url('') }}/asset_dashboard/dist/img/user3-128x128.jpg">
+                                                src="{{ url('') }}/asset/dashboard/dist/img/user3-128x128.jpg">
 
                                             <div class="contacts-list-info">
                                                 <span class="contacts-list-name">
@@ -282,7 +282,7 @@
                                     <li>
                                         <a href="#">
                                             <img class="contacts-list-img"
-                                                src="{{ url('') }}/asset_dashboard/dist/img/user5-128x128.jpg">
+                                                src="{{ url('') }}/asset/dashboard/dist/img/user5-128x128.jpg">
 
                                             <div class="contacts-list-info">
                                                 <span class="contacts-list-name">
@@ -298,7 +298,7 @@
                                     <li>
                                         <a href="#">
                                             <img class="contacts-list-img"
-                                                src="{{ url('') }}/asset_dashboard/dist/img/user6-128x128.jpg">
+                                                src="{{ url('') }}/asset/dashboard/dist/img/user6-128x128.jpg">
 
                                             <div class="contacts-list-info">
                                                 <span class="contacts-list-name">
@@ -314,7 +314,7 @@
                                     <li>
                                         <a href="#">
                                             <img class="contacts-list-img"
-                                                src="{{ url('') }}/asset_dashboard/dist/img/user8-128x128.jpg">
+                                                src="{{ url('') }}/asset/dashboard/dist/img/user8-128x128.jpg">
 
                                             <div class="contacts-list-info">
                                                 <span class="contacts-list-name">

@@ -6,7 +6,7 @@
             position: relative;
             overflow: hidden;
             background: #fff;
-            background: url("{{ url('') }}/novena/images/peresmian-hpu.jpg") no-repeat;
+            background: url("{{ url('') }}/asset/home/images/peresmian-hpu.jpg") no-repeat;
             background-size: cover;
             min-height: 550px;
         }
@@ -38,8 +38,8 @@
                             <div class="carousel-item active">
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <img src="{{ url('') }}/novena/images/blog/blog-1.jpg" alt="Gambar Artikel 2"
-                                            class="img-fluid">
+                                        <img src="{{ url('') }}/asset/home/images/blog/blog-1.jpg"
+                                            alt="Gambar Artikel 2" class="img-fluid">
                                     </div>
                                     <div class="col-md-6">
                                         <h5 style=" margin-bottom:2;">{{ $articles[$i]->title }}</h6>
@@ -60,8 +60,8 @@
                             <div class="carousel-item">
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <img src="{{ url('') }}/novena/images/blog/blog-2.jpg" alt="Gambar Artikel 2"
-                                            class="img-fluid">
+                                        <img src="{{ url('') }}/asset/home/images/blog/blog-2.jpg"
+                                            alt="Gambar Artikel 2" class="img-fluid">
                                     </div>
                                     <div class="col-md-6">
                                         <h5 style=" margin-bottom:2;">{{ $articles[$i]->title }}</h6>
@@ -155,7 +155,7 @@
                         <div class="col-lg-12 col-md-12 mb-5">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <img src="{{ url('') }}/novena/images/blog/blog-1.jpg" alt="Gambar Artikel 2"
+                                    <img src="{{ url('') }}/asset/home/images/blog/blog-1.jpg" alt="Gambar Artikel 2"
                                         class="img-fluid">
                                 </div>
                                 <div class="col-md-8" style="margin:0">
@@ -167,7 +167,7 @@
                             <hr>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <img src="{{ url('') }}/novena/images/blog/blog-1.jpg" alt="Gambar Artikel 2"
+                                    <img src="{{ url('') }}/asset/home/images/blog/blog-1.jpg" alt="Gambar Artikel 2"
                                         class="img-fluid">
                                 </div>
                                 <div class="col-md-8" style="margin:0">
@@ -193,8 +193,8 @@
                         <div class="col-lg-12 col-md-12 mb-5">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <img src="{{ url('') }}/novena/images/blog/blog-1.jpg" alt="Gambar Artikel 2"
-                                        class="img-fluid">
+                                    <img src="{{ url('') }}/asset/home/images/blog/blog-1.jpg"
+                                        alt="Gambar Artikel 2" class="img-fluid">
                                 </div>
                                 <div class="col-md-8" style="margin:0">
                                     <h5 style="font-size:16px; margin-bottom:0">All test cost 25% in always in
@@ -206,8 +206,8 @@
                             <hr>
                             <div class="row">
                                 <div class="col-md-4">
-                                    <img src="{{ url('') }}/novena/images/blog/blog-1.jpg" alt="Gambar Artikel 2"
-                                        class="img-fluid">
+                                    <img src="{{ url('') }}/asset/home/images/blog/blog-1.jpg"
+                                        alt="Gambar Artikel 2" class="img-fluid">
                                 </div>
                                 <div class="col-md-8" style="margin:0">
                                     <h5 style="font-size:16px; margin-bottom:0">All test cost 25% in always in
