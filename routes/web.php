@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\ArticlesController;
-use App\Http\Controllers\CategoryController;
+use App\Models\Articles;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ArticlesController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +19,10 @@ use Illuminate\Support\Facades\Route;
 
 //route free access
 Route::get('/', function () {
-    return view('layouts.homepage.main', [
+    return view('homepage', [
         'title' => 'Home',
-        'categories' => Category::all()
+        'categories' => Category::all(),
+        'articles' => Articles::all()
     ]);
 });
 
