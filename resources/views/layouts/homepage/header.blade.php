@@ -53,6 +53,7 @@
                             <li><a class="dropdown-item" href="blog-single.html">Blog Single</a></li>
                         </ul>
                     </li> --}}
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Gallery</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Kontak</a></li>
                     <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
                 </ul>

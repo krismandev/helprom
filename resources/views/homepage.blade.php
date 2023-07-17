@@ -38,7 +38,7 @@
                             <div class="carousel-item active">
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <img src="{{ url('') }}/asset/home/images/blog/blog-1.jpg"
+                                        <img src="{{ asset('storage/' . $articles[$i]->image_path) }}"
                                             alt="Gambar Artikel 2" class="img-fluid">
                                     </div>
                                     <div class="col-md-6">
@@ -49,19 +49,18 @@
                                             <p style="color:black !important">{!! $content !!} ...</p>
                                             <p style="font-size:12px; font-weight:bold; color:rgb(29, 27, 27)">
                                                 {{ $articles[$i]->created_at }}</p>
-                                            <a href="">
+                                            <a href="/detail-article/{{ $articles[$i]->slug }}">
                                                 <h6 style="font-size:12px; color:orangered">BACA SELENGKAPNYA</h6>
                                             </a>
                                     </div>
-
                                 </div>
                             </div>
                         @else
                             <div class="carousel-item">
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <img src="{{ url('') }}/asset/home/images/blog/blog-2.jpg"
-                                            alt="Gambar Artikel 2" class="img-fluid">
+                                        <img src="{{ asset('storage/' . $articles[$i]->image_path) }}" alt="Gambar Artikel"
+                                            class="img-fluid">
                                     </div>
                                     <div class="col-md-6">
                                         <h5 style=" margin-bottom:2;">{{ $articles[$i]->title }}</h6>
@@ -71,12 +70,10 @@
                                             <p style="color:black !important">{!! $content !!} ...</p>
                                             <p style="font-size:12px; font-weight:bold; color:rgb(29, 27, 27)">
                                                 {{ $articles[$i]->created_at }}</p>
-                                            <a href="">
+                                            <a href="/detail-article/{{ $articles[$i]->slug }}">
                                                 <h6 style="font-size:12px; color:orangered">BACA SELENGKAPNYA</h6>
                                             </a>
                                     </div>
-
-
                                 </div>
                             </div>
                         @endif
@@ -126,7 +123,8 @@
                     <div class="col-lg-3 col-md-6 col-sm-6 mb-3 justify-content-center align-items-stretch">
                         <div class="service-item">
                             <div class="icon">
-                                <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->image }}" width="100%">
+                                <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->image }}"
+                                    width="100%">
                             </div>
 
                             <a href="">

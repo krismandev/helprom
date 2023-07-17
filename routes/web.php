@@ -26,6 +26,15 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/detail-article/{slug}', function ($slug) {
+    $article = Articles::where('slug', $slug)->first();
+    return view('detail_article', [
+        'title' => 'Read Article',
+        'categories' => Category::all(),
+        'articles' => Articles::all(),
+        'article' => $article
+    ]);
+});
 
 //route access user not already login
 Route::group(['middleware' => 'guest'], function () {
@@ -49,6 +58,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     //articles
     Route::get('/articles', [ArticlesController::class, 'index']);
+
     //logout
     Route::get('/logout', function () {
         Auth()->logout();

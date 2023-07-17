@@ -51,6 +51,14 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href="/featured-articles" class="nav-link {{ $title == 'Featured Articles' ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-th"></i>
+                    <p>
+                        Featured Articles
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="/patients" class="nav-link {{ $title == 'Patients' ? 'active' : '' }}">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
