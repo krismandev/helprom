@@ -29,5 +29,14 @@ class DatabaseSeeder extends Seeder
             'role' => 'kader',
             'email' => 'kader1@gmail.com'
         ]);
+
+        $this->call([
+            CategorySeeder::class,
+            ArticlesSeeder::class,
+            PatientSeeder::class,
+            QuestionGroupSeeder::class,
+            ListAnswerSeeder::class,
+            QuestionSeeder::class,
+        ]);
     }
 }

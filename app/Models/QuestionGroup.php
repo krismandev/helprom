@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Patient extends Model
+class QuestionGroup extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
 
-    public function screenings()
+    public function questions()
     {
-        return $this->hasMany(Screening::class);
+        return $this->hasMany(Question::class);
     }
 }
