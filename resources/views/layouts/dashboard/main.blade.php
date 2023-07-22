@@ -106,7 +106,7 @@
     <!-- AdminLTE for demo purposes -->
     <script src="{{ url('') }}/asset/dashboard/dist/js/demo.js"></script>
 
-    {{-- <script src="{{ url('') }}/asset/dashboard/dist/js/demo.js"></script> --}} --}}
+    {{-- <script src="{{ url('') }}/asset/dashboard/dist/js/demo.js"></script> --}}
     @livewireScripts
     @yield('script')
 </body>

@@ -3,6 +3,7 @@
 use App\Models\Articles;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\CategoryController;
 
@@ -58,6 +59,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     //articles
     Route::get('/articles', [ArticlesController::class, 'index']);
+
+    //Patients
+    Route::get('/patients', [PatientController::class, 'index']);
 
     //logout
     Route::get('/logout', function () {
