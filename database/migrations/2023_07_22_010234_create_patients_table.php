@@ -20,7 +20,7 @@ return new class extends Migration
             $table->date('date_of_birth');
             $table->enum('gender', ['laki-laki', 'perempuan']);
             $table->string('phone');
-            $table->enum('marriage_status', ['menikah', 'belum menikah']);
+            $table->enum('marriage_status', ['kawin', 'belum kawin', 'cerai hidup', 'cerai mati']);
             $table->string('address');
             $table->string('occupation');
             $table->string('faculty');

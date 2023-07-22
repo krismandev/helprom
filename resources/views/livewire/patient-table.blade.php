@@ -76,7 +76,7 @@
                                             @endforeach
                                         @else
                                             <tr>
-                                                <td colspan="5" align="center">Tidak ada data</td>
+                                                <td colspan="12" align="center">Tidak ada data</td>
                                             </tr>
                                         @endif
 
@@ -86,6 +86,9 @@
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer clearfix">
+                            <div class="row justify-content-end">
+                                <span>Total data : {{ $patients->total() }}</span>
+                            </div>
                             <ul class="pagination pagination-sm m-0 float-right">
                                 {{-- @if (count($patients) != 0)
                                     {{ $patients->links() }}
@@ -98,7 +101,7 @@
             </div>
         </div>
     </section>
-    {{-- @include('modals.patient-modal') --}}
+    @include('modals.patient-modal')
     @section('script')
         <script>
             window.addEventListener('close-input-modal', event => {

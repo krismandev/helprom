@@ -77,6 +77,8 @@ class PatientTable extends Component
         'date_of_birth.required' => 'Tanggal lahir wajib diisi !',
         'date_of_birth.date' => 'Tanggal lahir harus format date !',
         'phone.required' => 'Nomor telepon wajib diisi !',
+        'phone.max' => 'Maksimal 14 karakter angka (numeric) !',
+        'phone.regex' => 'Harus berupa angka dan boleh menggunakan karakter + !',
         'gender.required' => 'Jenis kelamin wajib diisi !',
         'gender.in' => 'Jenis kelamin hanya boleh berisi (laki-laki/perempuan) !',
         'marriage_status.required' => 'Status pernikahan wajib diisi !',
