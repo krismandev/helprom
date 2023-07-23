@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Screening extends Model
+class ScreeningAnswer extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
 
-    public function patient()
+    public function question()
     {
-        return $this->belongsTo(Patient::class);
+        return $this->belongsTo(Question::class);
     }
 }

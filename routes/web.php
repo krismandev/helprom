@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ScreeningController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +63,15 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Patients
     Route::get('/patients', [PatientController::class, 'index']);
+
+    //Patients
+    Route::get('/screening', [ScreeningController::class, 'index']);
+
+    Route::get('test', function () {
+        return view('test', [
+            'title' => 'Test'
+        ]);
+    });
 
     //logout
     Route::get('/logout', function () {

@@ -13,9 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('screenings', function (Blueprint $table) {
+        Schema::create('screening_answers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('patient_id')->constrained('patients');
+            $table->foreignId('screening_id')->constrained('screenings');
+            $table->foreignId('question_id')->constrained('questions');
+            $table->string('answer');
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('screenings');
+        Schema::dropIfExists('screening_answers');
     }
 };

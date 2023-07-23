@@ -21,8 +21,8 @@ class Question extends Model
         return $this->belongsTo(ListAnswer::class);
     }
 
-    public function screenings()
+    public function screeningAnswers()
     {
-        return $this->hasMany(Screening::class);
+        return $this->hasMany(ScreeningAnswer::class);
     }
 }
