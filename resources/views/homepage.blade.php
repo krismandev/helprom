@@ -32,7 +32,6 @@
                 </li> --}}
                 </ol>
                 <div class="carousel-inner">
-
                     @for ($i = 0; $i < count($articles); $i++)
                         @if ($i == 0)
                             <div class="carousel-item active">

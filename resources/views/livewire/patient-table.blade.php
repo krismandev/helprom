@@ -87,7 +87,7 @@
                         <!-- /.card-body -->
                         <div class="card-footer clearfix">
                             <div class="row justify-content-end">
-                                <span>Total data : {{ $patients->total() }}</span>
+                                <span>Total pasien : {{ $patients->total() }}</span>
                             </div>
                             <ul class="pagination pagination-sm m-0 float-right">
                                 {{-- @if (count($patients) != 0)

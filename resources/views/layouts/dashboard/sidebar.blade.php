@@ -34,6 +34,23 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a href="/patients" class="nav-link {{ $title == 'Patients' ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-th"></i>
+                    <p>
+                        Patients
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/screening" class="nav-link {{ $title == 'Screening' ? 'active' : '' }}">
+
+                    <i class="nav-icon fas fa-table"></i>
+                    <p>
+                        Screenings
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="/category" class="nav-link {{ $title == 'Categories' ? 'active' : '' }}">
                     <i class="nav-icon fas fa-copy"></i>
                     <p>
@@ -58,23 +75,7 @@
                     </p>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="/patients" class="nav-link {{ $title == 'Patients' ? 'active' : '' }}">
-                    <i class="nav-icon fas fa-th"></i>
-                    <p>
-                        Patients
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="/screening" class="nav-link {{ $title == 'Screening' ? 'active' : '' }}">
 
-                    <i class="nav-icon fas fa-table"></i>
-                    <p>
-                        Screenings
-                    </p>
-                </a>
-            </li>
             <li class="nav-item">
                 <a href="/gallery" class="nav-link {{ $title == 'Gallery' ? 'active' : '' }}">
                     <i class="nav-icon far fa-image"></i>
