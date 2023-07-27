@@ -16,7 +16,7 @@ class ScreeningPage extends Component
     protected $paginationTheme = 'bootstrap';
     public $identity, $full_name, $date_of_birth, $gender, $phone, $marriage_status, $address, $occupation, $faculty, $major;
     public $add = false, $edit = false, $form = 0, $patient = '';
-    public $questions = [], $search = '';
+    public $questions = [], $search = '', $screening_delete_id;
 
     public function mount()
     {
@@ -192,6 +192,28 @@ class ScreeningPage extends Component
         $this->add = false;
         session()->flash('message', 'Data berhasil ditambahkan !');
         $this->empty();
+    }
+
+    //Show modal delete confirmation
+    public function deleteConfirmation($id)
+    {
+        $this->screening_delete_id = $id; //tahun_akademik id
+
+        $this->dispatchBrowserEvent('show-delete-confirmation-modal');
+    }
+
+    //Delete data
+    public function deleteData()
+    {
+        $screening = Screening::find($this->screening_delete_id);
+        try {
+            ScreeningAnswer::where('screening_id', $screening->id)->delete();
+            $screening->delete();
+            session()->flash('message', 'Data berhasil dihapus');
+        } catch (\Throwable $th) {
+            session()->flash('error', 'Data gagal dihapus karena digunakan di dalam sistem');
+        }
+        $this->screening_delete_id = null;
     }
 
     public function render()

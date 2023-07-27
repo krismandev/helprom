@@ -12,15 +12,15 @@
         <div class="modal-dialog modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header  bg-danger">
-                    <h5 class="modal-title" id="modalEditTitle">Hapus Artikel</h5>
+                    <h5 class="modal-title" id="modalEditTitle">Hapus Screening</h5>
                     <button type="button" class="close" data-dismiss="modal" wire:click="empty()" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <h6>Apakah anda yakin ingin menghapus artikel ?</h6>
-                    <p style="color: red; font-size: 14px">Catatan : Artikel tidak akan dapat dikembalikan apabila telah
-                        dihapus! </p>
+                    <p style="color: red; font-size: 14px">Catatan : Screening yang dihapus tidak dapat dikembalikan!
+                    </p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" wire:click="empty()"
