@@ -42,7 +42,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/screening" class="nav-link {{ $title == 'Screening' ? 'active' : '' }}">
+                <a href="/screening" class="nav-link {{ $title == 'Screenings' ? 'active' : '' }}">
 
                     <i class="nav-icon fas fa-table"></i>
                     <p>

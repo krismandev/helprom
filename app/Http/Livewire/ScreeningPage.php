@@ -16,7 +16,7 @@ class ScreeningPage extends Component
     protected $paginationTheme = 'bootstrap';
     public $identity, $full_name, $date_of_birth, $gender, $phone, $marriage_status, $address, $occupation, $faculty, $major;
     public $add = false, $edit = false, $form = 0, $patient = '';
-    public $questions = [];
+    public $questions = [], $search = '';
 
     public function mount()
     {
@@ -152,6 +152,7 @@ class ScreeningPage extends Component
         $this->dispatchBrowserEvent('to-top');
     }
 
+
     public function previous()
     {
         $this->form = $this->form - 1;
@@ -197,7 +198,9 @@ class ScreeningPage extends Component
     {
         return view('livewire.screening-page', [
             'patients' => Patient::all(),
-            'screenings' => Screening::paginate(10),
+            'screenings' => Screening::whereHas('patient', function ($query) {
+                return $query->where('full_name', 'like', '%' . $this->search . '%');
+            })->paginate(10),
             'questionGroup' => QuestionGroup::with(['questions' => function ($query) {
                 $query->with('listAnswer');
             }])->get()->all()

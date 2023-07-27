@@ -18,6 +18,7 @@ class ArticlesTable extends Component
     protected $paginationTheme = 'bootstrap';
     public $title, $image, $content, $category_id, $existImage, $article_edit_id, $article_delete_id;
     public $add = false, $edit = false, $unggulan = 0;
+    public $search = '', $category = '';
     public function rules()
     {
         if ($this->article_edit_id !== null) {
@@ -272,10 +273,15 @@ class ArticlesTable extends Component
         $this->resetPage();
     }
 
+    public function updatingCategory()
+    {
+        $this->resetPage();
+    }
+
     public function render()
     {
         return view('livewire.articles-table', [
-            'articles' => Articles::paginate(5),
+            'articles' => Articles::where('title', 'like', '%' . $this->search . '%')->where('category_id', 'like', '%' . $this->category . '%')->paginate(5),
             'categories' => Category::all()
         ]);
     }

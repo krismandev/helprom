@@ -15,6 +15,7 @@ class CategoryTable extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
     public $nama, $image, $description, $existImage, $category_edit_id, $category_delete_id;
+    public $search = '';
     public function rules()
     {
         if ($this->category_edit_id !== null) {
@@ -161,7 +162,7 @@ class CategoryTable extends Component
     public function render()
     {
         return view('livewire.category-table', [
-            'categories' => Category::paginate(5)
+            'categories' => Category::where('name', 'like', '%' . $this->search . '%')->orderBy('name', 'asc')->paginate(10)
         ]);
     }
 }

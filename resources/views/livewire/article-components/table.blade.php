@@ -23,6 +23,26 @@
 
                     <!-- /.card-header -->
                     <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="form-group">
+                                    <label for="search">Pencarian</label>
+                                    <input type="text" class="form-control" id="search" name="search"
+                                        wire:model="search" placeholder="Cari berdasarkan judul artikel">
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="form-group">
+                                    <label for="search">Filter Kategori</label>
+                                    <select name="category" class="form-control" id="category" wire:model="category">
+                                        <option value="">Semua</option>
+                                        @foreach ($categories as $item)
+                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                         <table class="table table-bordered table-responsive" style="display:table">
                             <thead>
                                 <tr>
@@ -66,7 +86,7 @@
                                     @endforeach
                                 @else
                                     <tr>
-                                        <td colspan="5" align="center">Tidak ada data</td>
+                                        <td colspan="6" align="center">Tidak ada data</td>
                                     </tr>
                                 @endif
 

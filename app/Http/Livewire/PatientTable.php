@@ -16,6 +16,7 @@ class PatientTable extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
     public $identity, $full_name, $date_of_birth, $gender, $phone, $marriage_status, $address, $occupation, $faculty, $major, $patient_edit_id, $patient_delete_id;
+    public $search = '';
     public function rules()
     {
         if ($this->patient_edit_id !== null) {
@@ -184,7 +185,7 @@ class PatientTable extends Component
     public function render()
     {
         return view('livewire.patient-table', [
-            'patients' => Patient::paginate(10)
+            'patients' => Patient::where('full_name', 'like', '%' . $this->search . '%')->orderBy('full_name', 'asc')->paginate(10),
         ]);
     }
 }

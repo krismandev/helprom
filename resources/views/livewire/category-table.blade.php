@@ -24,6 +24,15 @@
 
                         <!-- /.card-header -->
                         <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-4 col-sm-6">
+                                    <div class="form-group">
+                                        <label for="search">Pencarian</label>
+                                        <input type="text" class="form-control" id="search" name="search"
+                                            wire:model="search" placeholder="Cari berdasarkan nama kategori">
+                                    </div>
+                                </div>
+                            </div>
                             <table class="table table-bordered table-responsive" style="display:table">
                                 <thead>
                                     <tr>
