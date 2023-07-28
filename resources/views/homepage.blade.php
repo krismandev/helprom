@@ -172,11 +172,13 @@
                                     width="100%">
                             </div>
 
-                            <a href="">
-                                <div class="content">
-                                    <h6 align="center">{{ $item->name }}</h6>
-                                </div>
-                            </a>
+                            <div class="content">
+                                <h6 align="center">
+                                    <a href="/category/{{ $item->slug }}">
+                                        {{ $item->name }}
+                                    </a>
+                                </h6>
+                            </div>
                         </div>
                     </div>
                 @endforeach
@@ -231,9 +233,8 @@
                                     <div class="col-md-8" style="margin:0">
                                         <h6 style="font-size:16px; margin-bottom:0; "><a
                                                 href="/detail-article/{{ $item->slug }}">{{ $item->title }}</a></h6>
-                                        <p style="font-size:12px;">20 Juni 2023</p>
+                                        <p style="font-size:12px;">{{ $item->created_at }}</p>
                                     </div>
-
                                 </div>
                                 <hr>
                             @endforeach
