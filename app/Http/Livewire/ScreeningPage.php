@@ -15,8 +15,9 @@ class ScreeningPage extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
     public $identity, $full_name, $date_of_birth, $gender, $phone, $marriage_status, $address, $occupation, $faculty, $major;
-    public $add = false, $edit = false, $form = 0, $patient = '';
-    public $questions = [], $search = '', $screening_delete_id;
+    public $add = false, $edit = false, $detail = false;
+    public $form = 0, $patient = '', $screening, $listPatient;
+    public $questions = [], $search = '', $screening_delete_id, $filterYear, $filterMonth;
 
     public function mount()
     {
@@ -25,6 +26,8 @@ class ScreeningPage extends Component
         foreach ($quest as $q) {
             $this->questions[$q->id] = '';
         }
+        $this->filterYear = '2023';
+        $this->filterMonth = date('m');
     }
     public function rules()
     {
@@ -101,9 +104,14 @@ class ScreeningPage extends Component
         $this->empty();
         $this->add = false;
         $this->edit = false;
+        $this->detail = false;
     }
 
-    //Show modal delete confirmation
+    public function detailScreening($id)
+    {
+        $this->detail = true;
+        $this->screening = Screening::where('id', $id)->with('patient')->with('screeningAnswers')->first();
+    }
 
     public function updatingSearch()
     {
@@ -218,11 +226,16 @@ class ScreeningPage extends Component
 
     public function render()
     {
+        $this->listPatient = [];
+        $coba = Screening::whereMonth('created_at', date('m'))->pluck('patient_id')->toArray();
+        foreach ($coba as $c) {
+            array_push($this->listPatient, $c);
+        }
         return view('livewire.screening-page', [
-            'patients' => Patient::all(),
+            'patients' => Patient::whereNotIn('id', $this->listPatient)->get(),
             'screenings' => Screening::whereHas('patient', function ($query) {
                 return $query->where('full_name', 'like', '%' . $this->search . '%');
-            })->paginate(10),
+            })->whereYear('created_at', $this->filterYear)->whereMonth('created_at', $this->filterMonth)->paginate(10),
             'questionGroup' => QuestionGroup::with(['questions' => function ($query) {
                 $query->with('listAnswer');
             }])->get()->all()

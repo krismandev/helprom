@@ -1,8 +1,10 @@
 <div>
-    @if ($add == false && $edit == false)
+    @if ($add == false && $edit == false && $detail == false)
         @include('livewire.screening-components.table')
     @elseif ($edit == true)
         @include('livewire.screening-components.edit-form')
+    @elseif ($detail == true)
+        @include('livewire.screening-components.screening-detail')
     @else
         @include('livewire.screening-components.add-form')
     @endif

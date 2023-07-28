@@ -14,4 +14,8 @@ class ScreeningAnswer extends Model
     {
         return $this->belongsTo(Question::class);
     }
+    public function screening()
+    {
+        return $this->belongsTo(Screening::class);
+    }
 }

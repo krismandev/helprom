@@ -8,6 +8,8 @@
                     <div class="row">
                         <div class="col-lg-12 mb-5">
                             <div class="single-blog-item">
+
+                                <h2 class="mb-4 text-md"><a href="#">{{ $article->title }}</a></h2>
                                 <img src="{{ asset('storage/' . $article->image_path) }}" alt="Article Image"
                                     class="img-fluid">
 
@@ -20,8 +22,6 @@
                                         <span class="text-black text-capitalize mr-3"><i class="icofont-calendar mr-2"></i>
                                             28th January 2019</span>
                                     </div> --}}
-
-                                    <h2 class="mb-4 text-md"><a href="#">{{ $article->title }}</a></h2>
 
                                     {!! $article->content !!}
 
@@ -53,38 +53,39 @@
 
                         <div class="sidebar-widget latest-post mb-3">
                             <h5>Artikel Lainnya</h5>
-                            <div class="">
-                                <span class="text-sm text-muted">03 Mar 2018</span>
-                                <h6 class="my-2"><a href="#">Thoughtful living in los Angeles</a></h6>
-                            </div>
-                            <div class="">
-                                <span class="text-sm text-muted">03 Mar 2018</span>
-                                <h6 class="my-2"><a href="#">Vivamus molestie gravida turpis.</a></h6>
-                            </div>
-                            <div class="">
-                                <span class="text-sm text-muted">03 Mar 2018</span>
-                                <h6 class="my-2"><a href="#">Fusce lobortis lorem at ipsum semper sagittis</a>
-                                </h6>
-                            </div>
+                            @if (count($articles) != 0)
+                                @foreach ($articles as $item)
+                                    <div class="">
+                                        <span class="text-sm text-muted">{{ $item->created_at }}</span>
+                                        <h6 class="my-2"><a
+                                                href="/detail-article/{{ $item->slug }}">{{ $item->title }}</a>
+                                        </h6>
+                                    </div>
+                                @endforeach
+                            @else
+                                <div class="">
+                                    <span class="my-2">Tidak ada artikel</span>
+                                </div>
+                            @endif
+
                         </div>
                         <div class="sidebar-widget latest-post mb-3">
                             <h5>Artikel Unggulan</h5>
 
-                            <div class="">
-                                <span class="text-sm text-muted">03 Mar 2018</span>
-                                <h6 class="my-2"><a href="#">Thoughtful living in los Angeles</a></h6>
-                            </div>
-
-                            <div class="">
-                                <span class="text-sm text-muted">03 Mar 2018</span>
-                                <h6 class="my-2"><a href="#">Vivamus molestie gravida turpis.</a></h6>
-                            </div>
-
-                            <div class="">
-                                <span class="text-sm text-muted">03 Mar 2018</span>
-                                <h6 class="my-2"><a href="#">Fusce lobortis lorem at ipsum semper sagittis</a>
-                                </h6>
-                            </div>
+                            @if (count($featured) != 0)
+                                @foreach ($featured as $item)
+                                    <div class="">
+                                        <span class="text-sm text-muted">{{ $item->created_at }}</span>
+                                        <h6 class="my-2"><a
+                                                href="/detail-article/{{ $item->slug }}">{{ $item->title }}</a>
+                                        </h6>
+                                    </div>
+                                @endforeach
+                            @else
+                                <div class="">
+                                    <span class="my-2">Tidak ada artikel</span>
+                                </div>
+                            @endif
                         </div>
 
                         <div class="sidebar-widget category mb-3">
@@ -95,8 +96,8 @@
                                 @if (count($categories) !== 0)
                                     @foreach ($categories as $item)
                                         <li class="align-items-center">
-                                            <a href="#">{{ $item->name }}</a>
-                                            <span>(14)</span>
+                                            <a href="/category/{{ $item->slug }}">{{ $item->name }}</a>
+                                            <span>({{ count($item->articles) }})</span>
                                         </li>
                                     @endforeach
                                 @endif
@@ -104,45 +105,6 @@
                             </ul>
                         </div>
 
-
-                        {{-- <div class="sidebar-widget tags mb-3">
-                            <h5 class="mb-4">Tags</h5>
-
-                            <a href="#">Doctors</a>
-                            <a href="#">agency</a>
-                            <a href="#">company</a>
-                            <a href="#">medicine</a>
-                            <a href="#">surgery</a>
-                            <a href="#">Marketing</a>
-                            <a href="#">Social Media</a>
-                            <a href="#">Branding</a>
-                            <a href="#">Laboratory</a>
-                        </div> --}}
-
-
-                        {{-- <div class="sidebar-widget schedule-widget mb-3">
-                            <h5 class="mb-4">Time Schedule</h5>
-
-                            <ul class="list-unstyled">
-                                <li class="d-flex justify-content-between align-items-center">
-                                    <a href="#">Monday - Friday</a>
-                                    <span>9:00 - 17:00</span>
-                                </li>
-                                <li class="d-flex justify-content-between align-items-center">
-                                    <a href="#">Saturday</a>
-                                    <span>9:00 - 16:00</span>
-                                </li>
-                                <li class="d-flex justify-content-between align-items-center">
-                                    <a href="#">Sunday</a>
-                                    <span>Closed</span>
-                                </li>
-                            </ul>
-
-                            <div class="sidebar-contatct-info mt-4">
-                                <p class="mb-0">Need Urgent Help?</p>
-                                <h3>+23-4565-65768</h3>
-                            </div>
-                        </div> --}}
 
                     </div>
                 </div>

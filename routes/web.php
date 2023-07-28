@@ -24,7 +24,8 @@ Route::get('/', function () {
     return view('homepage', [
         'title' => 'Home',
         'categories' => Category::all(),
-        'articles' => Articles::all()
+        'articles' => Articles::where('featured', false)->limit(5)->get(),
+        'featured' => Articles::where('featured', true)->limit(5)->get()
     ]);
 });
 
@@ -33,10 +34,23 @@ Route::get('/detail-article/{slug}', function ($slug) {
     return view('detail_article', [
         'title' => 'Read Article',
         'categories' => Category::all(),
-        'articles' => Articles::all(),
+        'articles' => Articles::where('featured', false)->inRandomOrder()->limit(5)->get()->except($article->id),
+        'featured' => Articles::where('featured', true)->inRandomOrder()->limit(5)->get()->except($article->id),
         'article' => $article
     ]);
 });
+
+Route::get('/category/{slug}', function ($slug) {
+    $category = Category::where('slug', $slug)->first();
+    return view('category_page', [
+        'title' => $category->name,
+        'category' => $category,
+        'articles' => Articles::where('category_id', $category->id)->paginate(10),
+        'categories' => Category::all(),
+    ]);
+});
+
+
 
 //route access user not already login
 Route::group(['middleware' => 'guest'], function () {
@@ -60,6 +74,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     //articles
     Route::get('/articles', [ArticlesController::class, 'index']);
+
+    //featured articles
+    Route::get('/featured-articles', [ArticlesController::class, 'featured']);
 
     //Patients
     Route::get('/patients', [PatientController::class, 'index']);

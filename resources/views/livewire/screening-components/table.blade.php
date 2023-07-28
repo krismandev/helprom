@@ -5,6 +5,7 @@
                 <div class="card">
                     <div class="card-header">
                         <button class="btn btn-primary" wire:click='add()' data-toggle="modal">Tambah</button>
+                        <button class="btn btn-success">Export</button>
                     </div>
                     @if (session()->has('message'))
                         <div class="alert alert-success alert-dismissible mx-3 mt-2">
@@ -31,6 +32,48 @@
                                         wire:model="search" placeholder="Cari berdasarkan nama pasien">
                                 </div>
                             </div>
+                            @php
+                                $yearMin = '2023';
+                            @endphp
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="form-group">
+                                    <label for="search">Tahun</label>
+                                    <select class="form-control" id="filterYear" name="filterYear"
+                                        wire:model='filterYear'>
+                                        @for ($i = $yearMin; $i < date('Y'); $i++)
+                                            <option value="{{ $i }}">{{ $i }}</option>
+                                        @endfor
+                                        <option value="{{ date('Y') }}"
+                                            {{ date('Y') === date('Y') ? 'selected' : '' }}>
+                                            {{ date('Y') }}
+                                        </option>
+                                        <option value="{{ date('Y') + 1 }}">
+                                            {{ date('Y') + 1 }}
+                                        </option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="form-group">
+                                    <label for="filterMonth">Bulan</label>
+                                    <select class="form-control" id="filterMonth" name="filterMonth"
+                                        wire:model='filterMonth'>
+                                        <option value="01">Januari</option>
+                                        <option value="02">Februari</option>
+                                        <option value="03">Maret</option>
+                                        <option value="04">April</option>
+                                        <option value="05">Mei</option>
+                                        <option value="06">Juni</option>
+                                        <option value="07">Juli</option>
+                                        <option value="08">Agustus</option>
+                                        <option value="09">September</option>
+                                        <option value="10">Oktober</option>
+                                        <option value="11">November</option>
+                                        <option value="12">Desember</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                         <table class="table table-bordered table-responsive" style="display:table">
                             <thead>
@@ -54,9 +97,9 @@
                                             <td>{{ $item->created_at }}</td>
                                             <td>
                                                 <div style="display: flex;">
-                                                    <button wire:click="change('{{ $item->id }}')"
+                                                    <button wire:click="detailScreening('{{ $item->id }}')"
                                                         class="btn btn-info" style="margin-right:2px">
-                                                        <i class="fas fa-edit "></i>
+                                                        <i class="fas fa-eye "></i>
                                                     </button>
                                                     <button wire:click="deleteConfirmation('{{ $item->id }}')"
                                                         class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
@@ -66,7 +109,7 @@
                                     @endforeach
                                 @else
                                     <tr>
-                                        <td colspan="4" align="center">Tidak ada data</td>
+                                        <td colspan="5" align="center">Tidak ada data</td>
                                     </tr>
                                 @endif
 

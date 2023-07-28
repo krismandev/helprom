@@ -14,4 +14,9 @@ class Screening extends Model
     {
         return $this->belongsTo(Patient::class);
     }
+
+    public function screeningAnswers()
+    {
+        return $this->hasMany(ScreeningAnswer::class);
+    }
 }

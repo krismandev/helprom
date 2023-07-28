@@ -19,4 +19,11 @@ class ArticlesController extends Controller
             'title' => 'Articles'
         ]);
     }
+
+    public function featured()
+    {
+        return view('admin.featured_articles', [
+            'title' => 'Featured Articles'
+        ]);
+    }
 }

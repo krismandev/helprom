@@ -18,7 +18,7 @@
         <div class="container">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
-                    @for ($i = 0; $i < count($articles); $i++)
+                    @for ($i = 0; $i < count($featured); $i++)
                         @if ($i == 0)
                             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"
                                 style="background-color:orangered"></li>
@@ -32,23 +32,24 @@
                 </li> --}}
                 </ol>
                 <div class="carousel-inner">
-                    @for ($i = 0; $i < count($articles); $i++)
-                        @if ($i == 0)
+                    {{-- @foreach ($featured as $key => $item)
+                        @if ($key == 0)
                             <div class="carousel-item active">
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <img src="{{ asset('storage/' . $articles[$i]->image_path) }}"
-                                            alt="Gambar Artikel 2" class="img-fluid">
+                                        <img src="{{ asset('storage/' . $item->image_path) }}" alt="Gambar Artikel 2"
+                                            class="img-fluid">
                                     </div>
                                     <div class="col-md-6">
-                                        <h5 style=" margin-bottom:2;">{{ $articles[$i]->title }}</h6>
+                                        <h5 style=" margin-bottom:2;">{{ $item->title }}</h6>
                                             @php
-                                                $content = substr($articles[$i]->content, strpos($articles[$i]->content, '<p>'), 250);
+                                                $content = substr($item->content, strpos($item->content, ''), 250);
                                             @endphp
+                                            @dump($content)
                                             <p style="color:black !important">{!! $content !!} ...</p>
                                             <p style="font-size:12px; font-weight:bold; color:rgb(29, 27, 27)">
-                                                {{ $articles[$i]->created_at }}</p>
-                                            <a href="/detail-article/{{ $articles[$i]->slug }}">
+                                                {{ $item->created_at }}</p>
+                                            <a href="/detail-article/{{ $item->slug }}">
                                                 <h6 style="font-size:12px; color:orangered">BACA SELENGKAPNYA</h6>
                                             </a>
                                     </div>
@@ -58,18 +59,63 @@
                             <div class="carousel-item">
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
-                                        <img src="{{ asset('storage/' . $articles[$i]->image_path) }}" alt="Gambar Artikel"
+                                        <img src="{{ asset('storage/' . $item->image_path) }}" alt="Gambar Artikel"
                                             class="img-fluid">
                                     </div>
                                     <div class="col-md-6">
-                                        <h5 style=" margin-bottom:2;">{{ $articles[$i]->title }}</h6>
+                                        <h5 style=" margin-bottom:2;">{{ $item->title }}</h6>
                                             @php
-                                                $content = substr($articles[$i]->content, strpos($articles[$i]->content, '<p>'), 250);
+                                                $content = substr($item->content, strpos($item->content, '<p>'), 250);
                                             @endphp
                                             <p style="color:black !important">{!! $content !!} ...</p>
                                             <p style="font-size:12px; font-weight:bold; color:rgb(29, 27, 27)">
-                                                {{ $articles[$i]->created_at }}</p>
-                                            <a href="/detail-article/{{ $articles[$i]->slug }}">
+                                                {{ $item->created_at }}</p>
+                                            <a href="/detail-article/{{ $item->slug }}">
+                                                <h6 style="font-size:12px; color:orangered">BACA SELENGKAPNYA</h6>
+                                            </a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach --}}
+                    @for ($i = 0; $i < count($featured); $i++)
+                        @if ($i == 0)
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <img src="{{ asset('storage/' . $featured[$i]->image_path) }}"
+                                            alt="Gambar Artikel 2" class="img-fluid">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h5 style=" margin-bottom:2;">{{ $featured[$i]->title }}</h6>
+                                            @php
+                                                $content = substr($featured[$i]->content, strpos($featured[$i]->content, ''), 250);
+                                            @endphp
+                                            <p style="color:black !important">{!! $content !!} ...</p>
+                                            <p style="font-size:12px; font-weight:bold; color:rgb(29, 27, 27)">
+                                                {{ $featured[$i]->created_at }}</p>
+                                            <a href="/detail-article/{{ $featured[$i]->slug }}">
+                                                <h6 style="font-size:12px; color:orangered">BACA SELENGKAPNYA</h6>
+                                            </a>
+                                    </div>
+                                </div>
+                            </div>
+                        @else
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <img src="{{ asset('storage/' . $featured[$i]->image_path) }}" alt="Gambar Artikel"
+                                            class="img-fluid">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h5 style=" margin-bottom:2;">{{ $featured[$i]->title }}</h6>
+                                            @php
+                                                $content = substr($featured[$i]->content, strpos($featured[$i]->content, ''), 250);
+                                            @endphp
+                                            <p style="color:black !important">{!! $content !!} ...</p>
+                                            <p style="font-size:12px; font-weight:bold; color:rgb(29, 27, 27)">
+                                                {{ $featured[$i]->created_at }}</p>
+                                            <a href="/detail-article/{{ $featured[$i]->slug }}">
                                                 <h6 style="font-size:12px; color:orangered">BACA SELENGKAPNYA</h6>
                                             </a>
                                     </div>
@@ -150,34 +196,22 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-12 col-md-12 mb-5">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <img src="{{ url('') }}/asset/home/images/blog/blog-1.jpg" alt="Gambar Artikel 2"
-                                        class="img-fluid">
+                            @foreach ($featured as $item)
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <img src="{{ asset('storage/' . $item->image_path) }}" alt="Gambar Artikel 2"
+                                            class="img-fluid">
+                                    </div>
+                                    <div class="col-md-8" style="margin:0">
+                                        <h6 style="font-size:16px; margin-bottom:0"><a
+                                                href="/detail-article/{{ $item->slug }}">{{ $item->title }}</a></h6>
+                                        <p style="font-size:12px;">{{ $item->created_at }}</p>
+                                    </div>
                                 </div>
-                                <div class="col-md-8" style="margin:0">
-                                    <h5 style="font-size:16px; margin-bottom:0">All test cost 25% in always in
-                                        our laboratory</h6>
-                                        <p style="font-size:12px; font-weight:bold">20 Juni 2023</p>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <img src="{{ url('') }}/asset/home/images/blog/blog-1.jpg" alt="Gambar Artikel 2"
-                                        class="img-fluid">
-                                </div>
-                                <div class="col-md-8" style="margin:0">
-                                    <h5 style="font-size:16px; margin-bottom:0">All test cost 25% in always in
-                                        our laboratory</h6>
-                                        <p style="font-size:12px; font-weight:bold">20 Juni 2023</p>
-                                </div>
-                            </div>
-                            <a href="">
-                                <h6 class="mt-3" style="color:orangered">View All</h6>
-                            </a>
+                                <hr>
 
-                            <!-- Tambahkan lebih banyak artikel di sini -->
+                                <!-- Tambahkan lebih banyak artikel di sini -->
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -188,37 +222,21 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-12 col-md-12 mb-5">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <img src="{{ url('') }}/asset/home/images/blog/blog-1.jpg"
-                                        alt="Gambar Artikel 2" class="img-fluid">
-                                </div>
-                                <div class="col-md-8" style="margin:0">
-                                    <h5 style="font-size:16px; margin-bottom:0">All test cost 25% in always in
-                                        our laboratory</h6>
-                                        <p style="font-size:12px; font-weight:bold">20 Juni 2023</p>
-                                </div>
+                            @foreach ($articles as $item)
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <img src="{{ asset('storage/' . $item->image_path) }}" alt="Gambar Artikel 2"
+                                            class="img-fluid">
+                                    </div>
+                                    <div class="col-md-8" style="margin:0">
+                                        <h6 style="font-size:16px; margin-bottom:0; "><a
+                                                href="/detail-article/{{ $item->slug }}">{{ $item->title }}</a></h6>
+                                        <p style="font-size:12px;">20 Juni 2023</p>
+                                    </div>
 
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <img src="{{ url('') }}/asset/home/images/blog/blog-1.jpg"
-                                        alt="Gambar Artikel 2" class="img-fluid">
                                 </div>
-                                <div class="col-md-8" style="margin:0">
-                                    <h5 style="font-size:16px; margin-bottom:0">All test cost 25% in always in
-                                        our laboratory</h6>
-                                        <p style="font-size:12px; font-weight:bold">20 Juni 2023</p>
-                                </div>
-
-                            </div>
-
-                            <a href="">
-                                <h6 class="mt-3" style="color:orangered">View All</h6>
-                            </a>
-
-                            <!-- Tambahkan lebih banyak artikel di sini -->
+                                <hr>
+                            @endforeach
                         </div>
                     </div>
                 </div>
