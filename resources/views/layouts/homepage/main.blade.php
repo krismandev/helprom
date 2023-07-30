@@ -45,7 +45,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mr-auto col-sm-6">
-                    <div class="widget mb-5 mb-lg-0" style="color: black">
+                    <div class="widget mb-5 mb-lg-0" style="color: white">
                         <div class="logo mb-4">
                             <a class="navbar-brand" href="index.html">
                                 <img src="{{ url('') }}/asset/dashboard/images/logo.png" alt=""
