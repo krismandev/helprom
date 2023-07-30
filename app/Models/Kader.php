@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Kader extends Model
 {
     use HasFactory;
+    protected $guarded = ['id'];
+
+    public function user()
+    {
+        $this->belongsTo(User::class);
+    }
 }
