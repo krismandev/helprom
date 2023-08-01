@@ -2,14 +2,15 @@
 
 use App\Models\Articles;
 use App\Models\Category;
+use App\Models\SiteContentSetting;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\KaderController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\KaderController;
 use App\Http\Controllers\ScreeningController;
 use App\Http\Controllers\SiteContentSettingController;
-use App\Models\SiteContentSetting;
 
 /*
 |--------------------------------------------------------------------------
@@ -122,6 +123,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     //Setting
     Route::get('/settings', [SiteContentSettingController::class, 'index']);
+
+    //Setting
+    Route::get('/gallery', [GalleryController::class, 'index']);
 
     //logout
     Route::get('/logout', function () {
