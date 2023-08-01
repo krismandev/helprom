@@ -17,7 +17,6 @@ class KaderSeeder extends Seeder
     public function run()
     {
         $user = User::create([
-            'name' => 'kader1',
             'password' => bcrypt('kader1'),
             'role' => 'kader',
             'email' => 'kader1@gmail.com'
