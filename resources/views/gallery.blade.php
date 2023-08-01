@@ -17,6 +17,13 @@
                     </div>
                 @endforeach
             </div>
+            <div class="row">
+                <ul class="pagination pagination-sm m-0 float-right">
+                    @if (count($galleries) != 0)
+                        {{ $galleries->links() }}
+                    @endif
+                </ul>
+            </div>
         </div>
     </section>
 @endsection

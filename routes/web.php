@@ -65,9 +65,9 @@ Route::get('contact', function () {
 
 Route::get('galleries', function () {
     return view('gallery', [
-        'title' => 'Kontak',
+        'title' => 'Gallery',
         'categories' => Category::all(),
-        'galleries' => Gallery::all()
+        'galleries' => Gallery::latest()->paginate(10)
     ]);
 });
 
