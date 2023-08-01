@@ -8,16 +8,17 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginForm extends Component
 {
-    public $name;
+    public $email;
     public $password;
 
     protected $rules = [
-        'name' => 'required',
+        'email' => 'required|email:rfc',
         'password' => 'required|min:8'
     ];
 
     protected $messages = [
-        'name.required' => 'Username wajib diisi !',
+        'email.required' => 'Email wajib diisi !',
+        'email.email' => 'Field harus memiliki format email !',
         'password.required' => 'Password wajib diisi !',
         'password.min' => 'Password harus terdiri dari min 8 karakter'
     ];
@@ -37,12 +38,8 @@ class LoginForm extends Component
     {
         $validatedData = $this->validate();
         if (Auth::attempt($validatedData)) {
-            if (Auth::user()->role == 'guru' and Auth::user()->guru->pimpinan == 1) {
-                $this->dispatchBrowserEvent('role-modal');
-            } else {
                 request()->session()->regenerate();
                 return redirect()->intended('/dashboard');
-            }
         } else {
             return redirect('/login')->with('loginError', 'Username atau Password Anda salah!!');
         }

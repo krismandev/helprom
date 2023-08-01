@@ -13,18 +13,20 @@
             @endif
 
             <form wire:submit.prevent="authenticate" method="post">
+                <label for="email" class="d-block">Email</label>
                 <div class="input-group mb-3">
-                    <input type="text" wire:model="name" class="form-control @error('name') is-invalid @enderror"
-                        placeholder="Username">
+                    <input type="email" wire:model="email" class="form-control @error('email') is-invalid @enderror"
+                        placeholder=Email">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-user"></span>
                         </div>
                     </div>
-                    @error('name')
+                    @error('email')
                         <span class="invalid-feedback">{{ $message }}</span>
                     @enderror
                 </div>
+                <label for="password" class='d-block'>Password</label>
                 <div class="input-group mb-3">
                     <input type="password" wire:model="password"
                         class="form-control @error('password')
