@@ -29,7 +29,7 @@
                                     <div class="form-group">
                                         <label for="search">Pencarian</label>
                                         <input type="text" class="form-control" id="search" name="search"
-                                            wire:model="search" placeholder="Cari berdasarkan nama pasien">
+                                            wire:model="search" placeholder="Cari berdasarkan nama kader">
                                     </div>
                                 </div>
                             </div>
@@ -39,21 +39,14 @@
                                         <tr>
                                             <th style="width:
                                         10px">#</th>
-                                            <th>NIP/NIK/NIM</th>
+                                            <th>NIP</th>
                                             <th>Nama</th>
-                                            <th>Tanggal Lahir</th>
-                                            <th>Jenis Kelamin</th>
                                             <th>No Telp</th>
-                                            <th>Status Pernikahan</th>
-                                            <th style="width: 25%">Alamat
-                                            </th>
-                                            <th>Pekerjaan</th>
-                                            <th>Fakultas</th>
-                                            <th>Prodi</th>
+                                            <th>Jabatan</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    {{-- <tbody>
                                         @if (count($patients) !== 0)
                                             @foreach ($patients as $item)
                                                 <tr>
@@ -89,19 +82,19 @@
                                             </tr>
                                         @endif
 
-                                    </tbody>
+                                    </tbody> --}}
                                 </table>
                             </div>
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer clearfix">
                             <div class="row justify-content-end">
-                                <span>Total pasien : {{ $patients->total() }}</span>
+                                {{-- <span>Total pasien : {{ $patients->total() }}</span> --}}
                             </div>
                             <ul class="pagination pagination-sm m-0 float-right">
-                                @if (count($patients) != 0)
+                                {{-- @if (count($patients) != 0)
                                     {{ $patients->links() }}
-                                @endif
+                                @endif --}}
                             </ul>
                         </div>
                     </div>
@@ -110,7 +103,7 @@
             </div>
         </div>
     </section>
-    @include('modals.patient-modal')
+    {{-- @include('modals.kader-modal') --}}
     @section('script')
         <script>
             window.addEventListener('close-input-modal', event => {

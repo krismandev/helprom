@@ -26,10 +26,10 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/users" class="nav-link {{ $title == 'Users' ? 'active' : '' }}">
+                <a href="/kader" class="nav-link {{ $title == 'Kader' ? 'active' : '' }}">
                     <i class="nav-icon fas fa-user"></i>
                     <p>
-                        Users
+                        Kader
                     </p>
                 </a>
             </li>
@@ -86,7 +86,7 @@
             </li>
 
             <li class="nav-item">
-                <a href="/settings" class="nav-link">
+                <a href="/settings" class="nav-link {{ $title == 'Settings' ? 'active' : '' }}">
                     <i class="nav-icon fas fa-cog"></i>
                     <p>
                         Settings

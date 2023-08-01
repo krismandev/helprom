@@ -6,7 +6,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\KaderController;
 use App\Http\Controllers\ScreeningController;
+use App\Http\Controllers\SiteContentSettingController;
+use App\Models\SiteContentSetting;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,13 +24,43 @@ use App\Http\Controllers\ScreeningController;
 
 //route free access
 Route::get('/', function () {
+    $dynamicContent = SiteContentSetting::first()->content;
     return view('homepage', [
         'title' => 'Home',
         'categories' => Category::all(),
         'articles' => Articles::where('featured', false)->limit(5)->get(),
-        'featured' => Articles::where('featured', true)->limit(5)->get()
+        'featured' => Articles::where('featured', true)->limit(5)->get(),
+        'homepage' => $dynamicContent['homepage']
     ]);
 });
+
+Route::get('about/pengurus', function () {
+    $dynamicContent = SiteContentSetting::first()->content;
+    return view('pengurus', [
+        'title' => 'Pengurus HPU',
+        'categories' => Category::all(),
+        'member' => $dynamicContent['member']
+    ]);
+});
+
+Route::get('about', function () {
+    $dynamicContent = SiteContentSetting::first()->content;
+    return view('about', [
+        'title' => 'Tentang HPU',
+        'categories' => Category::all(),
+        'about' => $dynamicContent['about']
+    ]);
+});
+
+Route::get('contact', function () {
+    $dynamicContent = SiteContentSetting::first()->content;
+    return view('contact', [
+        'title' => 'Kontak',
+        'categories' => Category::all(),
+        'contact' => $dynamicContent['contact']
+    ]);
+});
+
 
 Route::get('/detail-article/{slug}', function ($slug) {
     $article = Articles::where('slug', $slug)->first();
@@ -69,6 +102,9 @@ Route::group(['middleware' => 'auth'], function () {
         ]);
     });
 
+    //kader
+    Route::get('/kader', [KaderController::class, 'index']);
+
     //categories
     Route::get('/category', [CategoryController::class, 'index']);
 
@@ -84,11 +120,8 @@ Route::group(['middleware' => 'auth'], function () {
     //Patients
     Route::get('/screening', [ScreeningController::class, 'index']);
 
-    Route::get('test', function () {
-        return view('test', [
-            'title' => 'Test'
-        ]);
-    });
+    //Setting
+    Route::get('/settings', [SiteContentSettingController::class, 'index']);
 
     //logout
     Route::get('/logout', function () {

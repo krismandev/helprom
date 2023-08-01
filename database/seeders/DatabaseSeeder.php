@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\SiteContentSetting;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -23,13 +24,6 @@ class DatabaseSeeder extends Seeder
             'email' => 'administrator@gmail.com'
         ]);
 
-        User::create([
-            'name' => 'kader1',
-            'password' => bcrypt('kader1'),
-            'role' => 'kader',
-            'email' => 'kader1@gmail.com'
-        ]);
-
         $this->call([
             CategorySeeder::class,
             ArticlesSeeder::class,
@@ -37,6 +31,8 @@ class DatabaseSeeder extends Seeder
             QuestionGroupSeeder::class,
             ListAnswerSeeder::class,
             QuestionSeeder::class,
+            KaderSeeder::class,
+            SiteContentSettingSeeder::class
         ]);
     }
 }
