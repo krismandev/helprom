@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Gallery;
+use App\Models\Patient;
 use App\Models\Articles;
 use App\Models\Category;
 use App\Models\SiteContentSetting;
@@ -11,7 +13,7 @@ use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ScreeningController;
 use App\Http\Controllers\SiteContentSettingController;
-use App\Models\Gallery;
+use App\Models\Kader;
 
 /*
 |--------------------------------------------------------------------------
@@ -108,7 +110,10 @@ Route::group(['middleware' => 'auth'], function () {
     //dashboard
     Route::get('/dashboard', function () {
         return view('admin.dashboard', [
-            'title' => 'Dashboard'
+            'title' => 'Dashboard',
+            'articles' => Articles::all()->count(),
+            'patient' => Patient::all()->count(),
+            'kader' => Kader::all()->count()
         ]);
     });
 

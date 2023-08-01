@@ -56,14 +56,14 @@
                         <p>Health Promoting University merupakan upaya untuk meningkatkan perilaku sehat dosen, staf
                             kependidikan, dan mahasiswa sehingga dapat lebih produktif dan berkualitas.</p>
 
-                        <ul class="list-inline footer-socials mt-4">
+                        {{-- <ul class="list-inline footer-socials mt-4">
                             <li class="list-inline-item"><a href="" style="background-color: black"><i
                                         class="icofont-facebook"></i></a></li>
                             <li class="list-inline-item"><a href="" style="background-color: black"><i
                                         class="icofont-twitter"></i></a></li>
                             <li class="list-inline-item"><a href="" style="background-color: black"><i
                                         class="icofont-linkedin"></i></a></li>
-                        </ul>
+                        </ul> --}}
                     </div>
                 </div>
             </div>
