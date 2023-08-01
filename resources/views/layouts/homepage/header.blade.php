@@ -41,7 +41,7 @@
                             {{-- <li><a class="dropdown-item" href="appoinment.html">Appoinment</a></li> --}}
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="/gallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/galleries">Gallery</a></li>
                     <li class="nav-item"><a class="nav-link" href="/contact">Kontak</a></li>
                     <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
                 </ul>

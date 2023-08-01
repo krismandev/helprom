@@ -11,6 +11,7 @@ use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ScreeningController;
 use App\Http\Controllers\SiteContentSettingController;
+use App\Models\Gallery;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,6 +60,14 @@ Route::get('contact', function () {
         'title' => 'Kontak',
         'categories' => Category::all(),
         'contact' => $dynamicContent['contact']
+    ]);
+});
+
+Route::get('galleries', function () {
+    return view('gallery', [
+        'title' => 'Kontak',
+        'categories' => Category::all(),
+        'galleries' => Gallery::all()
     ]);
 });
 
