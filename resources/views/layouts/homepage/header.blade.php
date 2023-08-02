@@ -1,7 +1,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navigation" id="navbar" style="background-color: rgb(243, 92, 36)">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="/">
                 <img src="{{ url('') }}/asset/dashboard/images/logo.png" alt="" class="img-fluid"
                     width="50px">
                 <h5 class="d-inline" style="color:white">Helprom</h5>
@@ -43,7 +43,14 @@
                     </li>
                     <li class="nav-item"><a class="nav-link" href="/galleries">Gallery</a></li>
                     <li class="nav-item"><a class="nav-link" href="/contact">Kontak</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                    @if (Auth::user())
+                        <li class="nav-item"><a class="btn btn-primary"
+                                style="background-color: white; color:rgb(243, 92, 36)"
+                                href="/dashboard">{{ Auth::user()->email }}</a>
+                        </li>
+                    @else
+                        <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+                    @endif
                 </ul>
             </div>
         </div>

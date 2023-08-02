@@ -15,6 +15,7 @@ class SiteContentSettingController extends Controller
      */
     public function index()
     {
+        $this->authorize('admin');
         return view('admin.settings', [
             'title' => 'Settings'
         ]);

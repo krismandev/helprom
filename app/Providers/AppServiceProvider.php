@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use Carbon\Carbon;
+use App\Models\User;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -29,5 +31,14 @@ class AppServiceProvider extends ServiceProvider
         config(['app.locale' => 'id']);
         Carbon::setLocale('id');
         date_default_timezone_set('Asia/Jakarta');
+
+        Gate::define('admin', function (User $user) {
+            return ($user->role === 'admin');
+        });
+
+
+        Gate::define('kader', function (User $user) {
+            return ($user->role === 'kader');
+        });
     }
 }
