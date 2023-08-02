@@ -39,29 +39,26 @@
                                         <tr>
                                             <th style="width:
                                         10px">#</th>
-                                            <th>NIP</th>
                                             <th>Nama</th>
+                                            <th>Email</th>
+                                            <th>NIP</th>
                                             <th>No Telp</th>
                                             <th>Jabatan</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
-                                    {{-- <tbody>
-                                        @if (count($patients) !== 0)
-                                            @foreach ($patients as $item)
+                                    <tbody>
+                                        @if (count($kader) !== 0)
+                                            @foreach ($kader as $item)
                                                 <tr>
-                                                    <td>{{ ($patients->currentpage() - 1) * $patients->perpage() + $loop->index + 1 }}
+                                                    <td>{{ ($kader->currentpage() - 1) * $kader->perpage() + $loop->index + 1 }}
                                                     </td>
-                                                    <td class="text-nowrap">{{ $item->identity }}</td>
                                                     <td class="text-nowrap">{{ $item->full_name }}</td>
-                                                    <td class="text-nowrap">{{ $item->date_of_birth }}</td>
-                                                    <td class="text-nowrap">{{ $item->gender }}</td>
+                                                    <td class="text-nowrap">{{ $item->user->email }}</td>
+                                                    <td class="text-nowrap">{{ $item->nip }}</td>
                                                     <td class="text-nowrap">{{ $item->phone }}</td>
-                                                    <td class="text-nowrap">{{ $item->marriage_status }}</td>
-                                                    <td>{{ $item->address }}</td>
-                                                    <td class="text-nowrap">{{ $item->occupation }}</td>
-                                                    <td class="text-nowrap">{{ $item->faculty }}</td>
-                                                    <td class="text-nowrap">{{ $item->major }}</td>
+                                                    <td class="text-nowrap">
+                                                        {{ $item->position == null ? '-' : $item->position }}</td>
                                                     <td>
                                                         <div style="display: flex;">
                                                             <button wire:click="edit('{{ $item->id }}')"
@@ -82,19 +79,19 @@
                                             </tr>
                                         @endif
 
-                                    </tbody> --}}
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer clearfix">
                             <div class="row justify-content-end">
-                                {{-- <span>Total pasien : {{ $patients->total() }}</span> --}}
+                                <span>Total kader : {{ $kader->total() }}</span>
                             </div>
                             <ul class="pagination pagination-sm m-0 float-right">
-                                {{-- @if (count($patients) != 0)
-                                    {{ $patients->links() }}
-                                @endif --}}
+                                @if (count($kader) != 0)
+                                    {{ $kader->links() }}
+                                @endif
                             </ul>
                         </div>
                     </div>
@@ -103,7 +100,7 @@
             </div>
         </div>
     </section>
-    {{-- @include('modals.kader-modal') --}}
+    @include('modals.kader-modal')
     @section('script')
         <script>
             window.addEventListener('close-input-modal', event => {
