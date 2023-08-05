@@ -2,13 +2,16 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
+use Carbon\Carbon;
 use App\Models\Patient;
+use Livewire\Component;
 use App\Models\Question;
-use App\Models\QuestionGroup;
 use App\Models\Screening;
-use App\Models\ScreeningAnswer;
 use Livewire\WithPagination;
+use App\Models\QuestionGroup;
+use App\Models\ScreeningAnswer;
+use App\Exports\ScreeningExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ScreeningPage extends Component
 {
@@ -224,6 +227,12 @@ class ScreeningPage extends Component
             session()->flash('error', 'Data gagal dihapus karena digunakan di dalam sistem');
         }
         $this->screening_delete_id = null;
+    }
+
+    public function export()
+    {
+        $date = Carbon::createFromFormat('m', $this->filterMonth);
+        return Excel::download(new ScreeningExport($this->search, $this->filterMonth, $this->filterYear), 'Screening pasien ' . $date->translatedFormat('F') . ' ' . $this->filterYear . '.xlsx');
     }
 
     public function render()

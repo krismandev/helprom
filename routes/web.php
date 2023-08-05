@@ -105,6 +105,10 @@ Route::group(['middleware' => 'guest'], function () {
     })->name('login');
 });
 
+Route::get('test', function () {
+    return view('admin.export_screening');
+});
+
 //route user already login
 Route::group(['middleware' => 'auth'], function () {
     //dashboard
