@@ -11,8 +11,11 @@
 
                     <div class="card-body">
                         <h5 style="font-weight: bold">Tambah Screening</h5>
+                        <span>Data screening yang ditambahkan adalah screening bulan ini
+                            <strong>{{ \Carbon\Carbon::now()->translatedFormat('F Y') }}</strong>
+                        </span>
                         <form role="form" wire:submit.prevent="{{ $form == 8 ? 'save' : 'next' }}">
-                            <div class="container padding-bottom-3x mb-1">
+                            <div class="container padding-bottom-3x mb-1 mt-3">
                                 <div class="card mb-3">
                                     <div class="card-body">
                                         <div
