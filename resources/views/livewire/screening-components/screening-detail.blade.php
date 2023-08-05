@@ -111,14 +111,6 @@
                                 <h5 class="py-3" style="font-weight:bold">{{ $item->group_name }}</h5>
                             </div>
                             @foreach ($item->questions as $quest)
-                                {{-- @php
-                                    $answer = '';
-                                    if ($screening->screeningAnswers->where('question_id', $quest->id)->first()) {
-                                        $screening = $screening->screeningAnswers->where('question_id', $quest->id)->first();
-                                        $answer = $screening->answer;
-                                    }
-                                    
-                                @endphp --}}
                                 <div class="div">
                                     <div class="form-group">
                                         <label for="tgl">{{ $quest->question }}</label>

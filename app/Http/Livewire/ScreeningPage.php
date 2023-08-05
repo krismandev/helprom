@@ -112,7 +112,6 @@ class ScreeningPage extends Component
         $this->detail = true;
         //get screening answer grouping
         $this->questionGroup = QuestionGroup::with('questions')->get();
-        // dd($this->questionGroup);
         $this->screening = Screening::where('id', $id)->with('patient')->with('screeningAnswers')->first();
     }
 
