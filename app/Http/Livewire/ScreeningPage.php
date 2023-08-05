@@ -16,7 +16,7 @@ class ScreeningPage extends Component
     protected $paginationTheme = 'bootstrap';
     public $identity, $full_name, $date_of_birth, $gender, $phone, $marriage_status, $address, $occupation, $faculty, $major;
     public $add = false, $edit = false, $detail = false;
-    public $form = 0, $patient = '', $screening, $listPatient;
+    public $form = 0, $patient = '', $screening, $listPatient, $questionGroup;
     public $questions = [], $search = '', $screening_delete_id, $filterYear, $filterMonth;
 
     public function mount()
@@ -110,6 +110,9 @@ class ScreeningPage extends Component
     public function detailScreening($id)
     {
         $this->detail = true;
+        //get screening answer grouping
+        $this->questionGroup = QuestionGroup::with('questions')->get();
+        // dd($this->questionGroup);
         $this->screening = Screening::where('id', $id)->with('patient')->with('screeningAnswers')->first();
     }
 

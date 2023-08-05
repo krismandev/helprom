@@ -9,9 +9,9 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                         <form role="form">
-                            <div class="container padding-bottom-3x mb-1">
-                                <div class="row">
-                                    <h5 style="font-weight: bold">Detail Screening</h5>
+                            <div class="container">
+                                <div class="row mb-3">
+                                    <h4 style="font-weight: bold">Detail Screening</h4>
                                 </div>
                                 <div class="div">
                                     <div class="form-group">
@@ -102,22 +102,36 @@
                                         </div>
                                     </div>
                                 </div>
-                                @foreach ($screening->screeningAnswers as $item)
-                                    <div class="div">
-                                        <div class="form-group">
-                                            <label for="tgl">{{ $item->question->question }}</label>
-                                            <input type="text" disabled class="form-control"
-                                                value="{{ $item->answer }}">
-                                        </div>
-                                    </div>
-                                @endforeach
-
-
-                            </div>
-                            <div class="modal-footer">
-                                <button class="btn btn-warning" wire:click='back()' data-toggle="modal">Kembali</button>
                             </div>
                         </form>
+                    </div>
+                    <div class="card-body">
+                        @foreach ($questionGroup as $item)
+                            <div class="row table-primary justify-content-center mb-2">
+                                <h5 class="py-3" style="font-weight:bold">{{ $item->group_name }}</h5>
+                            </div>
+                            @foreach ($item->questions as $quest)
+                                {{-- @php
+                                    $answer = '';
+                                    if ($screening->screeningAnswers->where('question_id', $quest->id)->first()) {
+                                        $screening = $screening->screeningAnswers->where('question_id', $quest->id)->first();
+                                        $answer = $screening->answer;
+                                    }
+                                    
+                                @endphp --}}
+                                <div class="div">
+                                    <div class="form-group">
+                                        <label for="tgl">{{ $quest->question }}</label>
+                                        <input type="text" disabled class="form-control"
+                                            value="{{ $screening->screeningAnswers->where('question_id', $quest->id)->first() == null ? '' : $screening->screeningAnswers->where('question_id', $quest->id)->first()->answer }}">
+                                    </div>
+                                </div>
+                            @endforeach
+                        @endforeach
+
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-warning" wire:click='back()' data-toggle="modal">Kembali</button>
                     </div>
                 </div>
             </div>
