@@ -15,8 +15,8 @@
             <form wire:submit.prevent="authenticate" method="post">
                 <label for="email" class="d-block">Email</label>
                 <div class="input-group mb-3">
-                    <input type="email" wire:model="email" class="form-control @error('email') is-invalid @enderror"
-                        placeholder=Email">
+                    <input type="email" wire:model.debounce.1s="email"
+                        class="form-control @error('email') is-invalid @enderror" placeholder=Email">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-user"></span>
@@ -28,7 +28,7 @@
                 </div>
                 <label for="password" class='d-block'>Password</label>
                 <div class="input-group mb-3">
-                    <input type="password" wire:model="password"
+                    <input type="password" wire:model.debounce.1s="password"
                         class="form-control @error('password')
                         is-invalid
                     @enderror"
@@ -49,9 +49,9 @@
                     <!-- /.col -->
                 </div>
             </form>
-            <p class="mb-1">
+            {{-- <p class="mb-1">
                 <a href="forgot-password.html">Lupa password ?</a>
-            </p>
+            </p> --}}
         </div>
         <!-- /.login-card-body -->
     </div>

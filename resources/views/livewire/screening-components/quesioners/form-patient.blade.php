@@ -1,8 +1,8 @@
 <div class="form-group">
-    <label for="patient">Pasien</label>
+    <label for="patient">Peserta</label>
     <select class="form-control @error('patient')is-invalid @enderror" id="patient" name="patient" wire:model="patient">
         <option value="">Pilih</option>
-        <option value="pasien-baru">Pasien Baru</option>
+        <option value="pasien-baru">Peserta Baru</option>
         @foreach ($patients as $item)
             <option value="{{ $item->id }}">{{ $item->full_name }}</option>
         @endforeach

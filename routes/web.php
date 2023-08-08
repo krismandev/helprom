@@ -134,7 +134,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/featured-articles', [ArticlesController::class, 'featured']);
 
     //Patients
-    Route::get('/patients', [PatientController::class, 'index']);
+    Route::get('/peserta', [PatientController::class, 'index']);
 
     //Patients
     Route::get('/screening', [ScreeningController::class, 'index']);

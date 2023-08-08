@@ -29,7 +29,7 @@
                                 <div class="form-group">
                                     <label for="search">Pencarian</label>
                                     <input type="text" class="form-control" id="search" name="search"
-                                        wire:model="search" placeholder="Cari berdasarkan nama pasien">
+                                        wire:model="search" placeholder="Cari berdasarkan nama peserta">
                                 </div>
                             </div>
                             @php
@@ -80,7 +80,7 @@
                                 <tr>
                                     <th style="width:
                         10px">#</th>
-                                    <th>Pasien</th>
+                                    <th>Peserta</th>
                                     <th>NIP/NIK/NIM</th>
                                     <th>Tanggal Screening</th>
                                     <th>Aksi</th>

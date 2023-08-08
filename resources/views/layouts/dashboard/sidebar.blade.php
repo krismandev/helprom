@@ -26,10 +26,10 @@
                 </li>
             @endcan
             <li class="nav-item">
-                <a href="/patients" class="nav-link {{ $title == 'Patients' ? 'active' : '' }}">
+                <a href="/peserta" class="nav-link {{ $title == 'Peserta' ? 'active' : '' }}">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
-                        Patients
+                        Peserta
                     </p>
                 </a>
             </li>

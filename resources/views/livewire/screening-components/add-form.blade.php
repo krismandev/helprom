@@ -24,7 +24,7 @@
                                                 <div class="step-icon-wrap">
                                                     <div class="step-icon"><i class="fas fa-user"></i></div>
                                                 </div>
-                                                <h4 class="step-title">Pilih Pasien</h4>
+                                                <h4 class="step-title">Pilih Peserta</h4>
                                             </div>
                                             <div
                                                 class="step {{ ($form == 1 or $form == 2 or $form == 3 or $form == 4 or $form == 5 or $form == 6 or $form == 7 or $form == 8) ? 'completed' : '' }}">

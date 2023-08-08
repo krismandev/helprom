@@ -43,7 +43,7 @@
                         <div class="inner">
                             <h3>{{ $patient }}</h3>
 
-                            <p>Pasien</p>
+                            <p>Peserta</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>
