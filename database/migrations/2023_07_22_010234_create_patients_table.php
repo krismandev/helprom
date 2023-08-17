@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('occupation');
             $table->string('faculty');
             $table->string('major');
+            $table->string('posbindu');
             $table->timestamps();
         });
     }

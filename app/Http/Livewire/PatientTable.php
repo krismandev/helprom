@@ -15,7 +15,7 @@ class PatientTable extends Component
     use WithFileUploads;
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
-    public $identity, $full_name, $date_of_birth, $gender, $phone, $marriage_status, $address, $occupation, $faculty, $major, $patient_edit_id, $patient_delete_id;
+    public $identity, $full_name, $date_of_birth, $gender, $phone, $marriage_status, $address, $occupation, $faculty, $major, $posbindu, $patient_edit_id, $patient_delete_id;
     public $search = '';
     public function rules()
     {
@@ -32,6 +32,7 @@ class PatientTable extends Component
                     'occupation' => 'required',
                     'faculty' => 'required',
                     'major' => 'required',
+                    'posbindu' => 'required',
                 ];
         } else {
             return
@@ -46,6 +47,7 @@ class PatientTable extends Component
                     'occupation' => 'required',
                     'faculty' => 'required',
                     'major' => 'required',
+                    'posbindu' => 'required',
                 ];
         }
     }
@@ -64,6 +66,7 @@ class PatientTable extends Component
         $this->occupation = null;
         $this->faculty = null;
         $this->major = null;
+        $this->posbindu = null;
         $this->patient_edit_id = null;
         $this->patient_delete_id = null;
         $this->resetErrorBag();
@@ -87,7 +90,8 @@ class PatientTable extends Component
         'address.required' => 'Alamat wajib diisi !',
         'occupation.required' => 'Pekerjaan wajib diisi !',
         'faculty.required' => 'Fakultas wajib diisi !',
-        'major.required' => 'Program studi wajib diisi !'
+        'major.required' => 'Program studi wajib diisi !',
+        'major.required' => 'Nama posbindu wajib diisi !'
     ];
 
     //Reatime Validation
@@ -110,6 +114,7 @@ class PatientTable extends Component
             'occupation' => $this->occupation,
             'faculty' => $this->faculty,
             'major' => $this->major,
+            'posbindu' => $this->posbindu
         ]);
         session()->flash('message', 'Data berhasil ditambahkan !');
         $this->empty();
@@ -130,6 +135,7 @@ class PatientTable extends Component
         $this->occupation = $patient->occupation;
         $this->faculty = $patient->faculty;
         $this->major = $patient->major;
+        $this->posbindu = $patient->posbindu;
         $this->patient_edit_id = $patient->id;
         $this->dispatchBrowserEvent('show-edit-modal');
     }
@@ -150,6 +156,7 @@ class PatientTable extends Component
             'occupation' => $this->occupation,
             'faculty' => $this->faculty,
             'major' => $this->major,
+            'posbindu' => $this->posbindu
         ]);
         session()->flash('message', 'Data berhasil diedit !');
         $this->empty();

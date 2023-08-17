@@ -29,7 +29,7 @@
                                     <div class="form-group">
                                         <label for="search">Pencarian</label>
                                         <input type="text" class="form-control" id="search" name="search"
-                                            wire:model="search" placeholder="Cari berdasarkan nama pasien">
+                                            wire:model="search" placeholder="Cari berdasarkan nama peserta">
                                     </div>
                                 </div>
                             </div>
@@ -50,6 +50,7 @@
                                             <th>Pekerjaan</th>
                                             <th>Fakultas</th>
                                             <th>Prodi</th>
+                                            <th>Nama Posbindu</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -69,6 +70,7 @@
                                                     <td class="text-nowrap">{{ $item->occupation }}</td>
                                                     <td class="text-nowrap">{{ $item->faculty }}</td>
                                                     <td class="text-nowrap">{{ $item->major }}</td>
+                                                    <td class="text-nowrap">{{ $item->posbindu }}</td>
                                                     <td>
                                                         <div style="display: flex;">
                                                             <button wire:click="edit('{{ $item->id }}')"
@@ -96,7 +98,7 @@
                         <!-- /.card-body -->
                         <div class="card-footer clearfix">
                             <div class="row justify-content-end">
-                                <span>Total pasien : {{ $patients->total() }}</span>
+                                <span>Total peserta : {{ $patients->total() }}</span>
                             </div>
                             <ul class="pagination pagination-sm m-0 float-right">
                                 @if (count($patients) != 0)

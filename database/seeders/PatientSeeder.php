@@ -25,7 +25,8 @@ class PatientSeeder extends Seeder
             'address' => 'Senawar Jaya, Bayung Lencir',
             'occupation' => 'Mahasiswa',
             'faculty' => 'Sains dan Teknologi',
-            'major' => 'Sistem Informasi'
+            'major' => 'Sistem Informasi',
+            'posbindu' => 'Posbindu CANTIK'
         ]);
     }
 }

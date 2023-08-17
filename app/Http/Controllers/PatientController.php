@@ -17,7 +17,7 @@ class PatientController extends Controller
     {
 
         return view('admin.patient', [
-            'title' => 'Patients'
+            'title' => 'Peserta'
         ]);
     }
 
