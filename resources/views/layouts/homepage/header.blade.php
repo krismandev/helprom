@@ -3,7 +3,7 @@
         <div class="container">
             <a class="navbar-brand" href="/">
                 <img src="{{ asset('/asset/dashboard/images/logo.png') }}" alt="" class="img-fluid" width="50px">
-                <h5 class="d-inline" style="color:white">Helprom</h5>
+                <h5 class="d-inline" style="color:white">HPU Pinang Masak</h5>
             </a>
 
             <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarmain"

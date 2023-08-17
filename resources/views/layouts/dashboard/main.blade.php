@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Helprom | {{ $title }}</title>
+    <title>HPU Pinang Masak | {{ $title }}</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -45,7 +45,7 @@
             <a href="/" class="brand-link">
                 <img src="{{ asset('/asset/dashboard/images/logo.png') }}" alt="Helprom Logo"
                     class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">Helprom</span>
+                <span class="brand-text font-weight-light">HPU Pinang Masak</span>
             </a>
 
             {{-- SIDEBAR --}}
@@ -58,7 +58,7 @@
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            <strong>Copyright &copy; 2023 <a href="/">Helprom</a>.</strong>
+            <strong>Copyright &copy; 2023 <a href="/">Health Promoting University Pinang Masak</a>.</strong>
             All rights reserved.
             <div class="float-right d-none d-sm-inline-block">
                 <b>Version</b> 1.0.0
