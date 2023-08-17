@@ -15,16 +15,14 @@
                     </p>
                 </a>
             </li>
-            @can('admin')
-                <li class="nav-item">
-                    <a href="/kader" class="nav-link {{ $title == 'Kader' ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-user"></i>
-                        <p>
-                            Kader
-                        </p>
-                    </a>
-                </li>
-            @endcan
+            <li class="nav-item">
+                <a href="/kader" class="nav-link {{ $title == 'Kader' ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-user"></i>
+                    <p>
+                        Kader
+                    </p>
+                </a>
+            </li>
             <li class="nav-item">
                 <a href="/peserta" class="nav-link {{ $title == 'Peserta' ? 'active' : '' }}">
                     <i class="nav-icon fas fa-th"></i>
@@ -76,16 +74,14 @@
                     </p>
                 </a>
             </li>
-            @can('admin')
-                <li class="nav-item">
-                    <a href="/settings" class="nav-link {{ $title == 'Settings' ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-cog"></i>
-                        <p>
-                            Settings
-                        </p>
-                    </a>
-                </li>
-            @endcan
+            <li class="nav-item">
+                <a href="/settings" class="nav-link {{ $title == 'Settings' ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-cog"></i>
+                    <p>
+                        Settings
+                    </p>
+                </a>
+            </li>
             <li class="nav-item">
                 <a href="/logout" class="nav-link">
                     <i class="nav-icon fas fa-sign-out-alt"></i>
