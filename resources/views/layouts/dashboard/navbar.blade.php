@@ -29,7 +29,7 @@
     <ul class="navbar-nav ml-auto">
         <div class="user-panel d-flex">
             <div class="image">
-                <img src="{{ url('') }}/asset/dashboard/dist/img/user2-160x160.jpg" class="img-circle elevation-2"
+                <img src="{{ asset('/asset/dashboard/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
                     alt="User Image">
             </div>
             <div class="info">

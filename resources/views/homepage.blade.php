@@ -6,7 +6,7 @@
             position: relative;
             overflow: hidden;
             background: #fff;
-            background: url("{{ url('') }}/asset/home/images/peresmian-hpu.jpg") no-repeat;
+            background: url("{{ asset('/asset/home/images/peresmian-hpu.jpg') }}") no-repeat;
             background-size: cover;
             min-height: 550px;
         }
