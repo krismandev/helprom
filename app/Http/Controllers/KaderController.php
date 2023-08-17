@@ -15,7 +15,6 @@ class KaderController extends Controller
      */
     public function index()
     {
-        $this->authorize('admin');
         return view('admin.kader', [
             'title' => 'Kader'
         ]);
