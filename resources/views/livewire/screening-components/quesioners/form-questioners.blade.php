@@ -1,5 +1,5 @@
 @php
-    $question = $questionGroup[$form - 1]->questions;
+    $question = $questionGroups[$form - 1]->questions;
     $i = 0;
 @endphp
 @foreach ($question as $item)

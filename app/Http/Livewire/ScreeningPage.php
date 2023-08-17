@@ -247,7 +247,7 @@ class ScreeningPage extends Component
             'screenings' => Screening::whereHas('patient', function ($query) {
                 return $query->where('full_name', 'like', '%' . $this->search . '%');
             })->whereYear('created_at', $this->filterYear)->whereMonth('created_at', $this->filterMonth)->paginate(10),
-            'questionGroup' => QuestionGroup::with(['questions' => function ($query) {
+            'questionGroups' => QuestionGroup::with(['questions' => function ($query) {
                 $query->with('listAnswer');
             }])->get()->all()
         ]);
