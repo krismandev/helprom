@@ -84,7 +84,7 @@
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <img src="{{ asset('storage/' . $featured[$i]->image_path) }}"
-                                            alt="Gambar Artikel 2" class="img-fluid">
+                                            alt="Gambar Artikel 2" class="img-fluid" style="height: 300px">
                                     </div>
                                     <div class="col-md-6">
                                         <h5 style=" margin-bottom:2;">{{ $featured[$i]->title }}</h6>
@@ -105,7 +105,7 @@
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <img src="{{ asset('storage/' . $featured[$i]->image_path) }}" alt="Gambar Artikel"
-                                            class="img-fluid">
+                                            class="img-fluid" style="height: 300px">
                                     </div>
                                     <div class="col-md-6">
                                         <h5 style=" margin-bottom:2;">{{ $featured[$i]->title }}</h6>
