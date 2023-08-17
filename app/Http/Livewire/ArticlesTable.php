@@ -58,8 +58,8 @@ class ArticlesTable extends Component
 
     //Custom Errror messages for validation
     protected $messages = [
-        'title.required' => 'Nama kategori wajib diisi !',
-        'title.unique' => 'Nama kategori sudah ada !',
+        'title.required' => 'Judul artikel wajib diisi !',
+        'title.unique' => 'Judul artikel sudah ada !',
         'content.required' => 'Konten wajib diisi !',
         'category_id.required' => 'Kategori wajib diisi !',
         'image.image' => 'File harus berupa gambar',
@@ -127,10 +127,9 @@ class ArticlesTable extends Component
                 list(, $data)      = explode(',', $data);
                 $imgeData = base64_decode($data);
                 $image_name = "/article-images/" . time() . $item . '.png';
-                $path = public_path() . $image_name;
-                file_put_contents($path, $imgeData);
+                Storage::put($image_name, $imgeData);
                 $image->removeAttribute('src');
-                $image->setAttribute('src', $image_name);
+                $image->setAttribute('src', '/storage' . $image_name);
             }
         }
         $content = $dom->saveHTML();
@@ -191,10 +190,10 @@ class ArticlesTable extends Component
         $dom = new \DomDocument();
         $dom->loadHtml($before);
         $imageFile = $dom->getElementsByTagName('img');
-        $storage = "storage/content-article";
         foreach ($imageFile as $item => $image) {
             $data = $image->getAttribute('src');
-            File::delete(public_path() . $data);
+            $imageStorage = str_replace('/storage', '', $data);
+            Storage::delete($imageStorage);
         }
 
         //SAVE NEW CONTENT
@@ -213,10 +212,9 @@ class ArticlesTable extends Component
                 list(, $data)      = explode(',', $data);
                 $imgeData = base64_decode($data);
                 $image_name = "/article-images/" . time() . $item . '.png';
-                $path = public_path() . $image_name;
-                file_put_contents($path, $imgeData);
+                Storage::put($image_name, $imgeData);
                 $image->removeAttribute('src');
-                $image->setAttribute('src', $image_name);
+                $image->setAttribute('src', '/storage' . $image_name);
             }
         }
         $content = $dom->saveHTML();
@@ -254,7 +252,8 @@ class ArticlesTable extends Component
             $imageFile = $dom->getElementsByTagName('img');
             foreach ($imageFile as $item => $image) {
                 $data = $image->getAttribute('src');
-                File::delete(public_path() . $data);
+                $imageStorage = str_replace('/storage', '', $data);
+                Storage::delete($imageStorage);
             }
             Storage::delete($article->image_path);
             $article->delete();

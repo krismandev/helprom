@@ -32,10 +32,10 @@ class ContentSettings extends Component
                 $dom = new \DomDocument();
                 $dom->loadHtml($before);
                 $imageFile = $dom->getElementsByTagName('img');
-                $storage = "storage/content-article";
                 foreach ($imageFile as $item => $image) {
                     $data = $image->getAttribute('src');
-                    File::delete(public_path() . $data);
+                    $imageStorage = str_replace('/storage', '', $data);
+                    Storage::delete($imageStorage);
                 }
             }
         }
@@ -57,10 +57,9 @@ class ContentSettings extends Component
                 list(, $data)      = explode(',', $data);
                 $imgeData = base64_decode($data);
                 $image_name = "/article-images/" . time() . $item . '.png';
-                $path = public_path() . $image_name;
-                file_put_contents($path, $imgeData);
+                Storage::put($image_name, $imgeData);
                 $image->removeAttribute('src');
-                $image->setAttribute('src', $image_name);
+                $image->setAttribute('src', '/storage' . $image_name);
             }
         }
         $homepage = $dom->saveHTML();
@@ -81,10 +80,9 @@ class ContentSettings extends Component
                 list(, $data)      = explode(',', $data);
                 $imgeData = base64_decode($data);
                 $image_name = "/article-images/" . time() . $item . '.png';
-                $path = public_path() . $image_name;
-                file_put_contents($path, $imgeData);
+                Storage::put($image_name, $imgeData);
                 $image->removeAttribute('src');
-                $image->setAttribute('src', $image_name);
+                $image->setAttribute('src', '/storage' . $image_name);
             }
         }
         $about = $dom->saveHTML();
@@ -105,10 +103,9 @@ class ContentSettings extends Component
                 list(, $data)      = explode(',', $data);
                 $imgeData = base64_decode($data);
                 $image_name = "/article-images/" . time() . $item . '.png';
-                $path = public_path() . $image_name;
-                file_put_contents($path, $imgeData);
+                Storage::put($image_name, $imgeData);
                 $image->removeAttribute('src');
-                $image->setAttribute('src', $image_name);
+                $image->setAttribute('src', '/storage' . $image_name);
             }
         }
         $member = $dom->saveHTML();
@@ -129,10 +126,9 @@ class ContentSettings extends Component
                 list(, $data)      = explode(',', $data);
                 $imgeData = base64_decode($data);
                 $image_name = "/article-images/" . time() . $item . '.png';
-                $path = public_path() . $image_name;
-                file_put_contents($path, $imgeData);
+                Storage::put($image_name, $imgeData);
                 $image->removeAttribute('src');
-                $image->setAttribute('src', $image_name);
+                $image->setAttribute('src', '/storage' . $image_name);
             }
         }
         $contact = $dom->saveHTML();
