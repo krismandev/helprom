@@ -6,7 +6,7 @@
     <meta name="description" content="Orbitor,business,company,agency,modern,bootstrap4,tech,software">
     <meta name="author" content="themefisher.com">
 
-    <title>Helprom | {{ $title }}</title>
+    <title>Health Promoting University Pinang Masak | {{ $title }}</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href={{asset('asset/home/images/favicon.ico')}} />
@@ -50,7 +50,7 @@
                             <a class="navbar-brand" href="index.html">
                                 <img src="{{asset('asset/dashboard/images/logo.png')}}" alt=""
                                     class="img-fluid" width="50px">
-                                <h5 class="d-inline">Helprom</h5>
+                                <h5 class="d-inline">Health Promoting University Pinang Masak</h5>
                             </a>
                         </div>
                         <p>Health Promoting University merupakan upaya untuk meningkatkan perilaku sehat dosen, staf
@@ -72,7 +72,7 @@
                 <div class="row align-items-center justify-content-between">
                     <div class="col-lg-6">
                         <div class="copyright">
-                            &copy; Copyright <span class="text-color">Helprom {{ date('Y') }}</span>
+                            &copy; Copyright <span class="text-color">HPU Pinang Masak {{ date('Y') }}</span>
                         </div>
                     </div>
                 </div>
