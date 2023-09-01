@@ -145,13 +145,9 @@
                                 University</span>
                         </h2>
 
-                        <p class="mb-4 p-3" style="color:orangered; background-color:white;">A
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus, eum sequi? Perferendis
-                            accusamus saepe, iure, voluptas maiores quis libero quas, ipsum nihil officia sequi voluptatum
-                            eaque? Dolorum commodi libero ad!
-                            repudiandae ipsam labore
-                            ipsa voluptatum quidem quae laudantium quisquam
-                            aperiam maiores sunt fugit, deserunt rem suscipit placeat.</p>
+                        <p class="mb-4 p-3" style="color:orangered; background-color:white;">Health Promoting University
+                            merupakan upaya untuk meningkatkan perilaku sehat dosen, staf kependidikan, dan mahasiswa
+                            sehingga dapat lebih produktif dan berkualitas.</p>
                         <div class="btn-container ">
                             <a href="/login" class="btn btn-main-2 btn-icon btn-round-full">HPU
                                 <i class="icofont-simple-right ml-2  "></i></a>
