@@ -89,9 +89,10 @@
                                     <div class="col-md-6">
                                         <h5 style=" margin-bottom:2;">{{ $featured[$i]->title }}</h6>
                                             @php
-                                                $content = substr($featured[$i]->content, strpos($featured[$i]->content, ''), 250);
+                                                $removeHtmlTag = strip_tags($featured[$i]->content);
+                                                $content = substr($removeHtmlTag, 0, 200);
                                             @endphp
-                                            <p style="color:black !important">{!! $content !!} ...</p>
+                                            <p style="color:black !important">{{ $content }} ...</p>
                                             <p style="font-size:12px; font-weight:bold; color:rgb(29, 27, 27)">
                                                 {{ $featured[$i]->created_at }}</p>
                                             <a href="/detail-article/{{ $featured[$i]->slug }}">
@@ -110,9 +111,10 @@
                                     <div class="col-md-6">
                                         <h5 style=" margin-bottom:2;">{{ $featured[$i]->title }}</h6>
                                             @php
-                                                $content = substr($featured[$i]->content, strpos($featured[$i]->content, ''), 250);
+                                                $removeHtmlTag = strip_tags($featured[$i]->content);
+                                                $content = substr($removeHtmlTag, 0, 200);
                                             @endphp
-                                            <p style="color:black !important">{!! $content !!} ...</p>
+                                            <p style="color:black !important">{{ $content }} ...</p>
                                             <p style="font-size:12px; font-weight:bold; color:rgb(29, 27, 27)">
                                                 {{ $featured[$i]->created_at }}</p>
                                             <a href="/detail-article/{{ $featured[$i]->slug }}">

@@ -33,10 +33,11 @@
                                     <h4 style=" margin-bottom:0"><a
                                             href="/detail-article/{{ $item->slug }}">{{ $item->title }}</a></h4>
                                     @php
-                                        $content = substr($item->content, strpos($item->content, ''), 250);
+                                        $removeHtmlTag = strip_tags($item->content);
+                                        $content = substr($removeHtmlTag, 0, 200);
                                     @endphp
-                                    <p style="color:black !important">{!! $content !!} ...</p>
-                                    <p style="font-size:12px; font-weight:bold">20 Juni 2023</p>
+                                    <p style="color:black !important">{{ $content }} ...</p>
+                                    <p style="font-size:12px; font-weight:bold">{{ $item->created_at }}</p>
                                 </div>
                             </div>
                             <hr>
