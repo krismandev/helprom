@@ -5,7 +5,12 @@
                 <div class="card">
                     <div class="card-header">
                         <button class="btn btn-primary" wire:click='add()' data-toggle="modal">Tambah</button>
-                        <button class="btn btn-success" wire:click='export()'>Export</button>
+                        <button type="submit" class="btn btn-success" wire:target="export()"
+                            wire:loading.attr="disabled">
+                            <span wire:loading.remove wire:target="export()">Export</span>
+                            <span wire:loading wire:target="export()">Exporting..</span>
+                        </button>
+                        {{-- <button class="btn btn-success" wire:click='export()'>Export</button> --}}
                     </div>
                     @if (session()->has('message'))
                         <div class="alert alert-success alert-dismissible mx-3 mt-2">

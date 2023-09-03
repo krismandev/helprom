@@ -46,6 +46,7 @@ class QuestionSeeder extends Seeder
             'question_group_id' => 1,
             'list_answer_id' => 1,
         ]);
+        // END PENYAKIT KELUARGA
 
         // Penyakit PRIBADI
         Question::create([
@@ -113,6 +114,7 @@ class QuestionSeeder extends Seeder
             'question_group_id' => 2,
             'list_answer_id' => 1
         ]);
+        //END PENYAKIT PRIBADI
 
         //FAKTOR RISIKO  
         Question::create([
@@ -155,6 +157,7 @@ class QuestionSeeder extends Seeder
             'question_group_id' => 3,
             'list_answer_id' => 2
         ]);
+        //END FAKTOR RISIKO
 
         //ANTROPOMETRI
         Question::create([
@@ -204,6 +207,7 @@ class QuestionSeeder extends Seeder
             'question_group_id' => 5,
             'list_answer_id' => null
         ]);
+        // END ANTROPOMETRI
 
         //KOLESTEROL
         Question::create([
@@ -226,6 +230,7 @@ class QuestionSeeder extends Seeder
             'question_group_id' => 6,
             'list_answer_id' => null
         ]);
+        //END KOLESTEROL
 
         //Mata
         Question::create([
@@ -268,10 +273,9 @@ class QuestionSeeder extends Seeder
             'question_group_id' => 7,
             'list_answer_id' => 6
         ]);
-
+        //END MATA
 
         //TELINGA
-
         Question::create([
             'question' => 'Tajam pendengaran telinga kanan',
             'question_group_id' => 8,
@@ -313,5 +317,81 @@ class QuestionSeeder extends Seeder
             'question_group_id' => 8,
             'list_answer_id' => 8
         ]);
+        // END TELINGA
+
+        // KADAR CO
+        Question::create([
+            'question' => 'Kadar CO (ppm)',
+            'question_group_id' => 9,
+            'list_answer_id' => null
+        ]);
+        // END KADAR CO
+
+
+        // IVA PENGUKURAN
+        Question::create([
+            'question' => 'Apakah ibu pernah melakukan pemeriksaan Inspeksi Visual Asam Asetat (IVA)?',
+            'question_group_id' => 10,
+            'list_answer_id' => 9
+        ]);
+        Question::create([
+            'question' => 'Jika ya, di mana ibu melakukan pemeriksaan IVA?',
+            'question_group_id' => 10,
+            'list_answer_id' => null
+        ]);
+        Question::create([
+            'question' => 'Kapan ibu melakukan pemeriksaan IVA?',
+            'question_group_id' => 10,
+            'list_answer_id' => null
+        ]);
+        // IVA PENGUKURAN
+
+        // SCREENING JIWA
+        Question::create([
+            'question' => 'Kurang berminat atau bergairah dalam melakukan apapun?',
+            'question_group_id' => 11,
+            'list_answer_id' => 10
+        ]);
+        Question::create([
+            'question' => 'Merasa murung, sedih, atau putus asa?',
+            'question_group_id' => 11,
+            'list_answer_id' => 10
+        ]);
+        Question::create([
+            'question' => 'Sulit tidur/mudah terbangun, atau terlalu banyak tidur?',
+            'question_group_id' => 11,
+            'list_answer_id' => 10
+        ]);
+        Question::create([
+            'question' => 'Merasa lelah atau kurang bertenaga?',
+            'question_group_id' => 11,
+            'list_answer_id' => 10
+        ]);
+        Question::create([
+            'question' => 'Kurang nafsu makan atau terlalu banyak makan?',
+            'question_group_id' => 11,
+            'list_answer_id' => 10
+        ]);
+        Question::create([
+            'question' => 'Kurang percaya diri — atau merasa bahwa Anda adalah orang yang gagal atau telah mengecewakan diri sendiri atau keluarga?',
+            'question_group_id' => 11,
+            'list_answer_id' => 10
+        ]);
+        Question::create([
+            'question' => 'Sulit berkonsentrasi pada sesuatu, misalnya membaca koran atau menonton televisi?',
+            'question_group_id' => 11,
+            'list_answer_id' => 10
+        ]);
+        Question::create([
+            'question' => 'Bergerak atau berbicara sangat lambat sehingga orang lain memperhatikannya. Atau sebaliknya; merasa resah atau gelisah sehingga Anda lebih sering bergerak dari biasanya?',
+            'question_group_id' => 11,
+            'list_answer_id' => 10
+        ]);
+        Question::create([
+            'question' => 'Merasa lebih baik mati atau ingin melukai diri sendiri dengan cara apapun?',
+            'question_group_id' => 11,
+            'list_answer_id' => 10
+        ]);
+        // END SCREENING JIWA
     }
 }
