@@ -86,19 +86,24 @@
                                             <div
                                                 class="step {{ ($form == 9 or $form == 10 or $form == 11) ? 'completed' : '' }} }}">
                                                 <div class="step-icon-wrap">
-                                                    <div class="step-icon"><i class="fas fa-volume-up"></i></div>
+                                                    <div class="step-icon"><i class="fa fa-male" aria-hidden="true"></i>
+                                                    </div>
                                                 </div>
                                                 <h4 class="step-title">Pengukuran Kadar CO Paru</h4>
                                             </div>
                                             <div class="step {{ ($form == 10 or $form == 11) ? 'completed' : '' }} }}">
                                                 <div class="step-icon-wrap">
-                                                    <div class="step-icon"><i class="fas fa-volume-up"></i></div>
+                                                    <div class="step-icon"><i class="fa fa-stethoscope"
+                                                            aria-hidden="true"></i>
+                                                    </div>
                                                 </div>
                                                 <h4 class="step-title">IVA Pengukuran</h4>
                                             </div>
                                             <div class="step {{ $form == 11 ? 'completed' : '' }} }}">
                                                 <div class="step-icon-wrap">
-                                                    <div class="step-icon"><i class="fas fa-volume-up"></i></div>
+                                                    <div class="step-icon"><i class="fa fa-heartbeat"
+                                                            aria-hidden="true"></i>
+                                                    </div>
                                                 </div>
                                                 <h4 class="step-title">Screening Kejiwaan</h4>
                                             </div>
