@@ -1,4 +1,4 @@
-<table>
+<table border="2px">
     <thead>
         <tr>
             <th rowspan="2">Nama Pasien</th>
@@ -11,9 +11,9 @@
     </thead>
     <thead>
         <tr>
+            {{-- <th></th>
             <th></th>
-            <th></th>
-            <th></th>
+            <th></th> --}}
             @foreach ($questionGroup as $item)
                 @foreach ($item->questions as $quest)
                     <th>{{ $quest->question }}</th>
@@ -27,7 +27,6 @@
                 <td>{{ $s->patient->full_name }}</td>
                 <td>{{ $s->patient->identity }}</td>
                 <td>{{ $s->created_at }}</td>
-                {{-- @dd($s->screeningAnswers) --}}
                 @foreach ($questionGroup as $item)
                     @foreach ($item->questions as $quest)
                         <td>

@@ -4,9 +4,11 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header">
-                            <button class="btn btn-primary" data-toggle="modal" data-target="#modalTambah">Tambah</button>
-                        </div>
+                        @can('admin')
+                            <div class="card-header">
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#modalTambah">Tambah</button>
+                            </div>
+                        @endcan
                         @if (session()->has('message'))
                             <div class="alert alert-success alert-dismissible mx-3 mt-2">
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -44,7 +46,9 @@
                                             <th>NIP</th>
                                             <th>No Telp</th>
                                             <th>Jabatan</th>
-                                            <th>Aksi</th>
+                                            @can('admin')
+                                                <th>Aksi</th>
+                                            @endcan
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -58,19 +62,22 @@
                                                     <td class="text-nowrap">{{ $item->nip }}</td>
                                                     <td class="text-nowrap">{{ $item->phone }}</td>
                                                     <td class="text-nowrap">
-                                                        {{ $item->position == null ? '-' : $item->position }}</td>
-                                                    <td>
-                                                        <div style="display: flex;">
-                                                            <button wire:click="edit('{{ $item->id }}')"
-                                                                class="btn btn-info" style="margin-right:2px">
-                                                                <i class="fas fa-edit "></i>
-                                                            </button>
-                                                            <button
-                                                                wire:click="deleteConfirmation('{{ $item->id }}')"
-                                                                class="btn btn-danger"><i
-                                                                    class="fas fa-trash-alt"></i></button>
-                                                        </div>
+                                                        {{ $item->position == null ? '-' : $item->position }}
                                                     </td>
+                                                    @can('admin')
+                                                        <td>
+                                                            <div style="display: flex;">
+                                                                <button wire:click="edit('{{ $item->id }}')"
+                                                                    class="btn btn-info" style="margin-right:2px">
+                                                                    <i class="fas fa-edit "></i>
+                                                                </button>
+                                                                <button
+                                                                    wire:click="deleteConfirmation('{{ $item->id }}')"
+                                                                    class="btn btn-danger"><i
+                                                                        class="fas fa-trash-alt"></i></button>
+                                                            </div>
+                                                        </td>
+                                                    @endcan
                                                 </tr>
                                             @endforeach
                                         @else

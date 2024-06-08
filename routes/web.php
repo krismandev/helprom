@@ -1,9 +1,12 @@
 <?php
 
+use App\Models\Kader;
 use App\Models\Gallery;
 use App\Models\Patient;
 use App\Models\Articles;
 use App\Models\Category;
+use App\Models\Screening;
+use App\Models\QuestionGroup;
 use App\Models\SiteContentSetting;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KaderController;
@@ -13,7 +16,6 @@ use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ScreeningController;
 use App\Http\Controllers\SiteContentSettingController;
-use App\Models\Kader;
 
 /*
 |--------------------------------------------------------------------------
@@ -103,10 +105,6 @@ Route::group(['middleware' => 'guest'], function () {
     Route::get('/login', function () {
         return view('login');
     })->name('login');
-});
-
-Route::get('test', function () {
-    return view('admin.export_screening');
 });
 
 //route user already login

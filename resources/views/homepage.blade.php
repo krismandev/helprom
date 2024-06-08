@@ -84,14 +84,15 @@
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <img src="{{ asset('storage/' . $featured[$i]->image_path) }}"
-                                            alt="Gambar Artikel 2" class="img-fluid">
+                                            alt="Gambar Artikel 2" class="img-fluid" style="height: 300px">
                                     </div>
                                     <div class="col-md-6">
                                         <h5 style=" margin-bottom:2;">{{ $featured[$i]->title }}</h6>
                                             @php
-                                                $content = substr($featured[$i]->content, strpos($featured[$i]->content, ''), 250);
+                                                $removeHtmlTag = strip_tags($featured[$i]->content);
+                                                $content = substr($removeHtmlTag, 0, 200);
                                             @endphp
-                                            <p style="color:black !important">{!! $content !!} ...</p>
+                                            <p style="color:black !important">{{ $content }} ...</p>
                                             <p style="font-size:12px; font-weight:bold; color:rgb(29, 27, 27)">
                                                 {{ $featured[$i]->created_at }}</p>
                                             <a href="/detail-article/{{ $featured[$i]->slug }}">
@@ -105,14 +106,15 @@
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <img src="{{ asset('storage/' . $featured[$i]->image_path) }}" alt="Gambar Artikel"
-                                            class="img-fluid">
+                                            class="img-fluid" style="height: 300px">
                                     </div>
                                     <div class="col-md-6">
                                         <h5 style=" margin-bottom:2;">{{ $featured[$i]->title }}</h6>
                                             @php
-                                                $content = substr($featured[$i]->content, strpos($featured[$i]->content, ''), 250);
+                                                $removeHtmlTag = strip_tags($featured[$i]->content);
+                                                $content = substr($removeHtmlTag, 0, 200);
                                             @endphp
-                                            <p style="color:black !important">{!! $content !!} ...</p>
+                                            <p style="color:black !important">{{ $content }} ...</p>
                                             <p style="font-size:12px; font-weight:bold; color:rgb(29, 27, 27)">
                                                 {{ $featured[$i]->created_at }}</p>
                                             <a href="/detail-article/{{ $featured[$i]->slug }}">
@@ -143,13 +145,9 @@
                                 University</span>
                         </h2>
 
-                        <p class="mb-4 p-3" style="color:orangered; background-color:white;">A
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus, eum sequi? Perferendis
-                            accusamus saepe, iure, voluptas maiores quis libero quas, ipsum nihil officia sequi voluptatum
-                            eaque? Dolorum commodi libero ad!
-                            repudiandae ipsam labore
-                            ipsa voluptatum quidem quae laudantium quisquam
-                            aperiam maiores sunt fugit, deserunt rem suscipit placeat.</p>
+                        <p class="mb-4 p-3" style="color:orangered; background-color:white;">Health Promoting University
+                            merupakan upaya untuk meningkatkan perilaku sehat dosen, staf kependidikan, dan mahasiswa
+                            sehingga dapat lebih produktif dan berkualitas.</p>
                         <div class="btn-container ">
                             <a href="/login" class="btn btn-main-2 btn-icon btn-round-full">HPU
                                 <i class="icofont-simple-right ml-2  "></i></a>
